@@ -1,59 +1,95 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getLiveUsersFeed, LiveCard } from "@/lib/session";
+import { useEffect, useState, useRef } from "react";
+import { LiveCard } from "@/lib/session";
 
 export default function LiveStudentsMenu() {
-  const [sourceCards, setSourceCards] = useState<LiveCard[]>([]);
   const [visibleCards, setVisibleCards] = useState<LiveCard[]>([]);
-  const [usedRecently, setUsedRecently] = useState<string[]>([]);
-  const [currentSourceIndex, setCurrentSourceIndex] = useState(0);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Carregar lista fixa do localStorage
-  useEffect(() => {
-    const feed = getLiveUsersFeed();
-    setSourceCards(feed);
-  }, []);
+  // Função para gerar valor aleatório com distribuição específica
+  const generateRandomAmount = (): number => {
+    const rand = Math.random();
+
+    if (rand < 0.25) {
+      return Math.floor(Math.random() * (5000 - 800 + 1)) + 800;
+    } else if (rand < 0.55) {
+      return Math.floor(Math.random() * (20000 - 5001 + 1)) + 5001;
+    } else if (rand < 0.85) {
+      return Math.floor(Math.random() * (45000 - 20001 + 1)) + 20001;
+    } else {
+      return Math.floor(Math.random() * (60000 - 45001 + 1)) + 45001;
+    }
+  };
+
+  // Função para gerar username aleatório
+  const generateUsername = (): string => {
+    const digits = Math.random() < 0.5 ? 3 : 4;
+    const randomNum = Math.floor(Math.random() * Math.pow(10, digits));
+    return `username${randomNum.toString().padStart(digits, '0')}`;
+  };
+
+  // Função para criar um novo card aleatório
+  const createRandomCard = (): LiveCard => {
+    return {
+      id: Date.now() + Math.random(),
+      username: generateUsername(),
+      amount: generateRandomAmount(),
+    };
+  };
 
   // Função para formatar valor com separador de milhar usando ponto
   const formatAmount = (amount: number): string => {
     return `${amount.toLocaleString('en-US').replace(/,/g, '.')} ZMW`;
   };
 
-  // Gerar 1 card por vez com delay aleatório
+  // Função para agendar próxima geração
+  const scheduleNextCard = () => {
+    // Limpar timer anterior se existir
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    // Calcular intervalo aleatório entre 8 e 14 segundos
+    const randomInterval = Math.floor(Math.random() * (14000 - 8000 + 1)) + 8000;
+
+    timerRef.current = setTimeout(() => {
+      // Gerar novo card
+      const newCard = createRandomCard();
+
+      setVisibleCards((prev) => {
+        const newCards = [...prev, newCard];
+        // Manter apenas os últimos 10 cards
+        return newCards.slice(-10);
+      });
+
+      // Agendar próximo card
+      scheduleNextCard();
+    }, randomInterval);
+  };
+
+  // Inicialização: gerar 2 cards iniciais e iniciar ciclo
   useEffect(() => {
-    if (sourceCards.length === 0) return;
+    // Gerar 2 cards iniciais
+    const initialCards: LiveCard[] = [
+      createRandomCard(),
+      createRandomCard(),
+    ];
+    setVisibleCards(initialCards);
 
-    const scheduleNextCard = () => {
-      const randomInterval = Math.floor(Math.random() * (14000 - 8000 + 1)) + 8000;
+    // Aguardar um momento e iniciar ciclo de geração
+    const startDelay = setTimeout(() => {
+      scheduleNextCard();
+    }, 1000);
 
-      setTimeout(() => {
-        // Pegar próximo card da lista
-        const nextCard = sourceCards[currentSourceIndex % sourceCards.length];
-        const cardKey = `${nextCard.username}-${nextCard.amount}`;
-
-        // Verificar se não foi usado recentemente
-        if (!usedRecently.includes(cardKey)) {
-          setVisibleCards((prev) => {
-            const newCards = [...prev, nextCard];
-            // Manter apenas os últimos 10 cards
-            return newCards.slice(-10);
-          });
-
-          // Adicionar à lista de usados recentemente (manter últimos 5)
-          setUsedRecently((prev) => {
-            const newUsed = [...prev, cardKey];
-            return newUsed.slice(-5);
-          });
-        }
-
-        setCurrentSourceIndex((prev) => prev + 1);
-        scheduleNextCard();
-      }, randomInterval);
+    // Cleanup: limpar timers ao desmontar
+    return () => {
+      clearTimeout(startDelay);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
     };
-
-    scheduleNextCard();
-  }, [sourceCards, currentSourceIndex, usedRecently]);
+  }, []);
 
   return (
     <div className="mb-6">
