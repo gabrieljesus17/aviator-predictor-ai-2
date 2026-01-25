@@ -4,44 +4,56 @@ import { useEffect, useState } from "react";
 import { getLiveUsersFeed, LiveCard } from "@/lib/session";
 
 export default function LiveStudentsMenu() {
-  const [liveCards, setLiveCards] = useState<LiveCard[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [sourceCards, setSourceCards] = useState<LiveCard[]>([]);
+  const [visibleCards, setVisibleCards] = useState<LiveCard[]>([]);
+  const [usedRecently, setUsedRecently] = useState<string[]>([]);
+  const [currentSourceIndex, setCurrentSourceIndex] = useState(0);
 
   // Carregar lista fixa do localStorage
   useEffect(() => {
     const feed = getLiveUsersFeed();
-    setLiveCards(feed);
+    setSourceCards(feed);
   }, []);
 
-  // Função para formatar valor com separador de milhar e sigla ZMW
+  // Função para formatar valor com separador de milhar usando ponto
   const formatAmount = (amount: number): string => {
-    return `${amount.toLocaleString('en-US')} ZMW`;
+    return `${amount.toLocaleString('en-US').replace(/,/g, '.')} ZMW`;
   };
 
-  // Loop de animação dos cards (roda a lista fixa)
+  // Gerar 1 card por vez com delay aleatório
   useEffect(() => {
-    if (liveCards.length === 0) return;
+    if (sourceCards.length === 0) return;
 
     const scheduleNextCard = () => {
       const randomInterval = Math.floor(Math.random() * (14000 - 8000 + 1)) + 8000;
-      
+
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % liveCards.length);
+        // Pegar próximo card da lista
+        const nextCard = sourceCards[currentSourceIndex % sourceCards.length];
+        const cardKey = `${nextCard.username}-${nextCard.amount}`;
+
+        // Verificar se não foi usado recentemente
+        if (!usedRecently.includes(cardKey)) {
+          setVisibleCards((prev) => {
+            const newCards = [...prev, nextCard];
+            // Manter apenas os últimos 10 cards
+            return newCards.slice(-10);
+          });
+
+          // Adicionar à lista de usados recentemente (manter últimos 5)
+          setUsedRecently((prev) => {
+            const newUsed = [...prev, cardKey];
+            return newUsed.slice(-5);
+          });
+        }
+
+        setCurrentSourceIndex((prev) => prev + 1);
         scheduleNextCard();
       }, randomInterval);
     };
 
     scheduleNextCard();
-  }, [liveCards]);
-
-  // Cards visíveis (rotação da lista fixa)
-  const visibleCards = liveCards.length > 0 
-    ? [
-        liveCards[currentIndex % liveCards.length],
-        liveCards[(currentIndex + 1) % liveCards.length],
-        liveCards[(currentIndex + 2) % liveCards.length],
-      ]
-    : [];
+  }, [sourceCards, currentSourceIndex, usedRecently]);
 
   return (
     <div className="mb-6">
@@ -52,17 +64,17 @@ export default function LiveStudentsMenu() {
         </span>
       </div>
 
-      {/* Cards roláveis horizontalmente */}
+      {/* Cards roláveis horizontalmente - ordem reversa (mais recente primeiro) */}
       <div className="overflow-x-auto scrollbar-hide">
         <div className="flex gap-3 pb-2">
-          {visibleCards.map((card, idx) => (
+          {visibleCards.slice().reverse().map((card, idx) => (
             <div
-              key={`${card.id}-${idx}`}
+              key={`${card.id}-${Date.now()}-${idx}`}
               className="flex-shrink-0 bg-[#1a1a1a] rounded-lg p-3 flex items-center gap-3 min-w-[200px] animate-slideIn"
             >
               {/* Avatar com imagem */}
               <div className="w-10 h-10 rounded-full flex-shrink-0 overflow-hidden bg-[#1a1a1a]">
-                <img 
+                <img
                   src="https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/018d5f5f-061f-4940-a806-d5600e0b78b5.png"
                   alt="Aviator"
                   className="w-full h-full object-cover"
@@ -71,7 +83,7 @@ export default function LiveStudentsMenu() {
 
               {/* Informações à direita */}
               <div className="flex flex-col">
-                <span 
+                <span
                   className="text-white text-sm font-medium"
                   style={{
                     textShadow: '0 0 8px rgba(175, 247, 23, 0.5)'
@@ -79,7 +91,7 @@ export default function LiveStudentsMenu() {
                 >
                   {card.username}
                 </span>
-                <span 
+                <span
                   className="text-[#aff717] text-xs font-semibold"
                   style={{
                     textShadow: '0 0 8px rgba(175, 247, 23, 0.6)'

@@ -56,7 +56,7 @@ export default function Step3() {
           </h2>
 
           {/* Card Principal do Jogo com borda gradiente */}
-          <div 
+          <div
             className="bg-[#121212] rounded-2xl overflow-hidden relative"
             style={{
               border: '2px solid transparent',
@@ -65,8 +65,14 @@ export default function Step3() {
               backgroundClip: 'padding-box, border-box'
             }}
           >
-            {/* Parte superior - espaço para imagem futura */}
-            <div className="w-full h-48 bg-[#1a1a1a]"></div>
+            {/* Parte superior - imagem do Aviator AI */}
+            <div className="w-full h-48 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
+              <img
+                src="https://pub-c0bfb119504542e0b2e6ebc8f6b3b1df.r2.dev/user-uploads/user_32bsobektMxVyp4lNjf7TryrISo/202be2e9-a812-43fe-94f7-894ccffcb00f.png"
+                alt="Aviator AI Predictor"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
             {/* Parte inferior - conteúdo */}
             <div className="p-6 flex flex-col items-center gap-3">

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 
@@ -157,19 +157,12 @@ export default function Step5() {
       <div className="w-full max-w-md mx-auto px-4 py-6">
         
         {/* Barra Superior */}
-        <div className="flex justify-between items-center mb-8">
-          <button 
-            onClick={() => updateActivity()}
-            className="flex items-center gap-2 text-white text-sm bg-transparent"
-          >
-            <Star className="w-4 h-4" />
-            <span>Lottery</span>
-          </button>
-          
-          <button 
+        <div className="flex justify-end items-center mb-8">
+          <button
             onClick={handleLogout}
-            className="text-white text-sm bg-transparent hover:text-gray-300 transition-colors"
+            className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
           >
+            <LogOut className="w-4 h-4" />
             Logout
           </button>
         </div>
