@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, memo } from "react";
 import { LiveCard } from "@/lib/session";
 
-export default function LiveStudentsMenu() {
+function LiveStudentsMenu() {
   const [visibleCards, setVisibleCards] = useState<LiveCard[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -166,3 +166,6 @@ export default function LiveStudentsMenu() {
     </div>
   );
 }
+
+// Exportar com memo para evitar re-renders desnecessários
+export default memo(LiveStudentsMenu);
