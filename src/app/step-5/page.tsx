@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
 import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
+import { soundManager } from "@/lib/sounds";
 
 // Estados da máquina
 type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop";
@@ -93,6 +94,8 @@ export default function Step5() {
     if (state !== "idle") return;
 
     updateActivity();
+    // Som de click ao clicar
+    soundManager.playClick();
     setState("analyzing-bet");
     setStatusText("Analyzing data…");
 
@@ -115,12 +118,14 @@ export default function Step5() {
   // Handler: Get Signal
   const handleGetSignal = async () => {
     if (state !== "bet-ready") return;
-    
+
     updateActivity();
+    // Som de click ao clicar
+    soundManager.playClick();
     setState("analyzing-signal");
     setStatusText("Analyzing data…");
     setLogs([]);
-    
+
     const signalLogs = [
       "> Initiating flight path analysis...",
       "> Processing real-time exit vectors...",
@@ -129,16 +134,19 @@ export default function Step5() {
       "> LOCKING SIGNAL...",
       "> SUCCESS: Multiplier signal acquired."
     ];
-    
+
     await addLogsSequentially(signalLogs, 500);
-    
+
     // Após última linha, animar multiplicador
     const targetMultiplier = generateMultiplier();
     animateMultiplier(targetMultiplier);
-    
+
     // Aguardar animação terminar
     await new Promise(resolve => setTimeout(resolve, 700));
-    
+
+    // Som dopaminérgico quando o multiplicador final é revelado
+    soundManager.playSuccessB();
+
     setStatusText("");
     setState("loop");
   };
@@ -146,6 +154,8 @@ export default function Step5() {
   // Handler: Get Another Signal
   const handleGetAnotherSignal = () => {
     updateActivity();
+    // Som de click ao clicar
+    soundManager.playClick();
     setState("idle");
     setMultiplier(1.00);
     setStatusText("");

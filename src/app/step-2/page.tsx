@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { grantAccess, updateActivity, isSessionActive } from "@/lib/session";
 import { Unlock } from "lucide-react";
+import { soundManager } from "@/lib/sounds";
 
 export default function Step2() {
   const router = useRouter();
@@ -21,15 +22,20 @@ export default function Step2() {
 
   const handleUnlock = () => {
     updateActivity();
-    
+
+    // Som de click ao clicar no botão
+    soundManager.playClick();
+
     if (accessCode === "1898") {
       setError("");
       setShowPopup(true);
       setPopupText("Decrypting...");
-      
+
       // Após 2.5s mudar texto e redirecionar
       setTimeout(() => {
         setPopupText("ACCESS GRANTED");
+        // Som de sucesso A quando ACCESS GRANTED aparece
+        soundManager.playSuccessA();
         setTimeout(() => {
           grantAccess();
           router.push("/step-3");
@@ -37,6 +43,8 @@ export default function Step2() {
       }, 2500);
     } else {
       setError("Invalid access code");
+      // Som de erro para código incorreto
+      soundManager.playError();
     }
   };
 

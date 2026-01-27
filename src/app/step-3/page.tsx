@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import { LogOut } from "lucide-react";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
+import { soundManager } from "@/lib/sounds";
 
 export default function Step3() {
   const router = useRouter();
@@ -25,6 +26,7 @@ export default function Step3() {
 
   const handleActivate = () => {
     updateActivity();
+    soundManager.playClick();
     router.push("/step-4");
   };
 
