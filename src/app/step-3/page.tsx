@@ -47,7 +47,7 @@ export default function Step3() {
         <LiveStudentsMenu />
 
         {/* Linha de separação mais fina */}
-        <div className="h-[0.5px] bg-[#2dff57] my-8"></div>
+        <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
 
         {/* Seção AI SIGNALS - título maior */}
         <div>

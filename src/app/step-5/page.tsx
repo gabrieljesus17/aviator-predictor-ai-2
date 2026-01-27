@@ -171,10 +171,16 @@ export default function Step5() {
         <LiveStudentsMenu />
 
         {/* Linha de separação */}
-        <div className="h-px bg-[#2a2a2a] my-8"></div>
+        <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
 
-        {/* CARD PRINCIPAL DO PREDICTOR */}
-        <div className="bg-[#111111] rounded-2xl p-6 mb-8">
+        {/* CARD PRINCIPAL DO PREDICTOR - com borda verde e glow sutil */}
+        <div
+          className="bg-[#111111] rounded-2xl p-6 mb-8"
+          style={{
+            border: '0.5px solid #1d8b33',
+            boxShadow: '0 0 8px rgba(29, 139, 51, 0.3)'
+          }}
+        >
           
           {/* Cabeçalho do Card */}
           <div className="flex justify-between items-center mb-6">
@@ -184,43 +190,43 @@ export default function Step5() {
             >
               Voltar
             </button>
-            
+
             <button
               onClick={() => updateActivity()}
-              className="bg-[#ff8c00] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#ff7700] transition-colors"
+              className="bg-black border border-[#ffd400] text-[#ffd400] px-3 py-[6px] rounded-lg text-[10.78px] font-medium hover:bg-[#ffd400] hover:text-black transition-colors"
             >
-              COMO USAR O PREDICTOR
+              Como usar o predictor
             </button>
           </div>
 
-          {/* Título */}
-          <h1 className="text-white text-xl font-medium text-center mb-8">
+          {/* Título - aumentado 20% e peso 500 */}
+          <h1 className="text-white text-2xl font-medium text-center mb-8">
             Aviator AI PREDICTOR
           </h1>
 
-          {/* Multiplicador */}
+          {/* Multiplicador - aumentado 30% e peso 500 */}
           <div className="text-center mb-6">
-            <div className="text-white text-6xl font-bold">
+            <div className="text-white text-[4.68rem] font-medium">
               x{multiplier.toFixed(2)}
             </div>
           </div>
 
-          {/* Texto de Status */}
-          <div className="text-center mb-6 h-6">
+          {/* Texto de Status - aumentado 10% e espaçamento de 1 linha acima */}
+          <div className="text-center mb-6 h-6 mt-6">
             {statusText && (
-              <p className="text-[#dbdd1c] text-sm font-medium">
+              <p className="text-[#dbdd1c] text-[15.4px] font-medium">
                 {statusText}
               </p>
             )}
           </div>
 
-          {/* Botões Principais */}
+          {/* Botões Principais - altura reduzida 17% e peso 500 */}
           {state !== "loop" && (
             <div className="flex flex-col gap-3 mb-6">
               <button
                 onClick={handleGetBetSize}
                 disabled={state !== "idle"}
-                className={`w-full py-3 px-6 rounded-lg font-bold transition-colors ${
+                className={`w-full py-[9.96px] px-6 rounded-lg font-medium transition-colors ${
                   state === "idle"
                     ? "bg-[#2dff57] text-black hover:bg-[#26e04d]"
                     : "bg-[#2dff57] text-black opacity-60 cursor-not-allowed"
@@ -232,7 +238,7 @@ export default function Step5() {
               <button
                 onClick={handleGetSignal}
                 disabled={state !== "bet-ready"}
-                className={`w-full py-3 px-6 rounded-lg font-bold transition-colors ${
+                className={`w-full py-[9.96px] px-6 rounded-lg font-medium transition-colors ${
                   state === "bet-ready"
                     ? "bg-[#2dff57] text-black hover:bg-[#26e04d]"
                     : "bg-gray-500 text-gray-300 cursor-not-allowed"
@@ -243,20 +249,20 @@ export default function Step5() {
             </div>
           )}
 
-          {/* Botão Loop */}
+          {/* Botão Loop - altura reduzida 17% e peso 500 */}
           {state === "loop" && (
             <div className="mb-6">
               <button
                 onClick={handleGetAnotherSignal}
-                className="w-full bg-[#ffd400] text-black font-bold py-3 px-6 rounded-lg hover:bg-[#ffcc00] transition-colors"
+                className="w-full bg-[#ffd400] text-black font-medium py-[9.96px] px-6 rounded-lg hover:bg-[#ffcc00] transition-colors"
               >
                 Get another Signal
               </button>
             </div>
           )}
 
-          {/* Campo de Logs */}
-          <div className="w-full bg-[#0a0a0a] rounded-lg p-4 h-48 overflow-y-auto">
+          {/* Campo de Logs - altura reduzida ~20% */}
+          <div className="w-full bg-[#0a0a0a] rounded-lg p-4 h-[9.6rem] overflow-y-auto">
             <div className="font-mono text-xs space-y-1">
               {logs.map((log, index) => (
                 <div

@@ -52,13 +52,13 @@ export default function Step4() {
         <LiveStudentsMenu />
 
         {/* Linha de separação */}
-        <div className="h-px bg-[#2a2a2a] my-8"></div>
+        <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
 
-        {/* Botão Voltar */}
+        {/* Botão Voltar - reduzido 18% na altura */}
         <div className="mb-8">
           <button
             onClick={handleVoltar}
-            className="bg-black border border-[#ffd400] text-[#ffd400] px-6 py-2 rounded-lg hover:bg-[#ffd400] hover:text-black transition-colors"
+            className="bg-black border border-[#ffd400] text-[#ffd400] px-6 py-[6.56px] rounded-lg hover:bg-[#ffd400] hover:text-black transition-colors"
           >
             Voltar
           </button>
