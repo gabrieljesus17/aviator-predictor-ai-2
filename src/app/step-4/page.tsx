@@ -58,16 +58,19 @@ export default function Step4() {
         <div className="mb-8">
           <button
             onClick={handleVoltar}
-            className="bg-black border border-[#ffd400] text-[#ffd400] px-6 py-[6.56px] rounded-lg hover:bg-[#ffd400] hover:text-black transition-colors"
+            className="bg-black border border-[#ffd400] text-[#ffd400] px-6 py-[6.16px] rounded-lg hover:bg-[#ffd400] hover:text-black transition-colors flex items-center gap-2"
           >
-            Voltar
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
           </button>
         </div>
 
         {/* Conteúdo Principal */}
         <div className="flex flex-col items-center">
           {/* Título Principal */}
-          <h1 className="text-white text-xl font-medium text-center mb-4 mt-6">
+          <h1 className="text-white text-[23.52px] font-medium text-center mb-4 mt-6">
             Primeiro, encontre o jogo 'Aviator'
           </h1>
 

@@ -81,10 +81,22 @@ export default function Step2() {
         {/* Botão de validação com ícone */}
         <button
           onClick={handleUnlock}
-          className="w-full py-4 bg-[#2dff57] text-black text-lg font-bold rounded-lg hover:bg-[#20c64e] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
+          className="w-full py-[14.08px] bg-[#2dff57] text-black text-lg font-bold rounded-lg hover:bg-[#20c64e] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
         >
           <Unlock className="w-5 h-5" />
           VALIDATE
+        </button>
+
+        {/* Texto informativo */}
+        <p className="text-gray-400 text-sm text-center mt-2">
+          If you haven't gotten your access code yet, click the button below.
+        </p>
+
+        {/* Botão GET ACCESS CODE */}
+        <button
+          className="w-full py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"
+        >
+          GET ACCESS CODE
         </button>
       </div>
 

@@ -91,11 +91,11 @@ export default function Step5() {
   // Handler: Get Bet Size
   const handleGetBetSize = async () => {
     if (state !== "idle") return;
-    
+
     updateActivity();
     setState("analyzing-bet");
     setStatusText("Analyzing data…");
-    
+
     const betLogs = [
       "> Connecting to data stream...",
       "> Analyzing market volatility...",
@@ -104,11 +104,11 @@ export default function Step5() {
       "> Finalizing bet size...",
       "> SUCCESS: Bet parameters calculated."
     ];
-    
+
     await addLogsSequentially(betLogs, 800);
-    
+
     // Após última linha, mudar status e desbloquear Get Signal
-    setStatusText("Aposte um valor entre 10 U$ até 30 U$");
+    setStatusText("Bet an amount from 10 ZMW to 50 ZMW");
     setState("bet-ready");
   };
 
@@ -186,16 +186,19 @@ export default function Step5() {
           <div className="flex justify-between items-center mb-6">
             <button
               onClick={handleVoltar}
-              className="bg-black border border-[#ffd400] text-[#ffd400] px-4 py-2 rounded-lg text-sm hover:bg-[#ffd400] hover:text-black transition-colors"
+              className="bg-black border border-[#ffd400] text-[#ffd400] px-4 py-[7.52px] rounded-lg text-sm hover:bg-[#ffd400] hover:text-black transition-colors flex items-center gap-2"
             >
-              Voltar
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
             </button>
 
             <button
               onClick={() => updateActivity()}
-              className="bg-black border border-[#ffd400] text-[#ffd400] px-3 py-[6px] rounded-lg text-[10.78px] font-medium hover:bg-[#ffd400] hover:text-black transition-colors"
+              className="bg-black border border-[#ff8c00] text-[#ff8c00] px-3 py-[6px] rounded-lg text-[10.78px] font-medium hover:bg-[#ff8c00] hover:text-black transition-colors"
             >
-              Como usar o predictor
+              HOW TO USE PREDICTOR
             </button>
           </div>
 
@@ -214,7 +217,12 @@ export default function Step5() {
           {/* Texto de Status - aumentado 10% e espaçamento de 1 linha acima */}
           <div className="text-center mb-6 h-6 mt-6">
             {statusText && (
-              <p className="text-[#dbdd1c] text-[15.4px] font-medium">
+              <p
+                className="text-[#dbdd1c] text-[15.4px] font-medium"
+                style={{
+                  textShadow: '0 0 8px currentColor'
+                }}
+              >
                 {statusText}
               </p>
             )}

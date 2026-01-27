@@ -19,8 +19,8 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#0a0a0a]">
       <div className="w-full max-w-md flex flex-col items-center gap-8">
         {/* Título com gradiente customizado */}
-        <h1 
-          className="text-[12vw] sm:text-7xl md:text-8xl font-normal text-center tracking-wider w-[80%] leading-tight"
+        <h1
+          className="text-[12vw] sm:text-7xl md:text-8xl font-normal text-center tracking-wider w-[95%] leading-tight whitespace-nowrap"
           style={{
             background: 'linear-gradient(to bottom, #2dff57, #20c64e, #b4b4b4)',
             WebkitBackgroundClip: 'text',

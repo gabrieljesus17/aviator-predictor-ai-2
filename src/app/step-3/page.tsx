@@ -59,7 +59,7 @@ export default function Step3() {
           <div
             className="bg-[#121212] rounded-2xl overflow-hidden relative"
             style={{
-              border: '2px solid transparent',
+              border: '0.5px solid transparent',
               backgroundImage: 'linear-gradient(#121212, #121212), linear-gradient(to bottom, #2dff57, #5ec87c, #e8e8e8)',
               backgroundOrigin: 'border-box',
               backgroundClip: 'padding-box, border-box'
