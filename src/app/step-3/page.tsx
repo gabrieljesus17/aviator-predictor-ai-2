@@ -51,9 +51,13 @@ export default function Step3() {
 
         {/* Seção AI SIGNALS - título maior */}
         <div>
-          <h2 className="text-[1.7rem] font-medium text-[#2dff57] text-center mb-6">
-            / /   AI SIGNALS   / /
-          </h2>
+          <div className="flex items-center justify-center mb-6 gap-4">
+            <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
+            <h2 className="text-[1.7rem] font-normal text-[#2dff57] text-center whitespace-nowrap">
+              AI SIGNALS
+            </h2>
+            <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
+          </div>
 
           {/* Card Principal do Jogo com borda gradiente */}
           <div

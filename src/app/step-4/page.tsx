@@ -71,12 +71,12 @@ export default function Step4() {
         <div className="flex flex-col items-center">
           {/* Título Principal */}
           <h1 className="text-white text-[23.52px] font-medium text-center mb-4 mt-6">
-            Primeiro, encontre o jogo 'Aviator'
+            First, find the "Aviator" game
           </h1>
 
           {/* Subtítulo */}
           <p className="text-[#b0b0b0] text-sm text-center mb-6">
-            Como encontrar o Aviator dentro da plataforma
+            HOW TO FIND AVIATOR ON <span className="text-white" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.6)' }}>BETWINNER</span>
           </p>
 
           {/* Card Central */}
@@ -90,9 +90,9 @@ export default function Step4() {
           {/* Botão de Confirmação */}
           <button
             onClick={handleEncontreiJogo}
-            className="w-full bg-[#2dff57] text-black font-bold py-3 px-6 rounded-lg hover:bg-[#26e04d] transition-colors"
+            className="w-full bg-[#2dff57] text-black font-medium py-3 px-6 rounded-lg hover:bg-[#26e04d] transition-colors"
           >
-            ENCONTREI O JOGO
+            I FOUND THE GAME
           </button>
         </div>
 
