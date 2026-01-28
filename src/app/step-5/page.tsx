@@ -10,13 +10,40 @@ import { soundManager } from "@/lib/sounds";
 // Estados da máquina
 type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop" | "cooldown";
 
-// Mensagens técnicas rotativas
-const TECH_MESSAGES = [
-  "⚡ 2.4k signals processed in last 60min",
-  "📊 Model accuracy: 94.7% (live tracking)",
-  "🔄 38 active users analyzing right now",
-  "🎯 Last batch: 19 wins detected",
-];
+// Geradores de valores dinâmicos para mensagens técnicas
+const generateSignalsProcessed = () => {
+  const value = 1.5 + Math.random() * 2.3; // 1.5k a 3.8k
+  return `${value.toFixed(1)}k`;
+};
+
+const generateModelAccuracy = () => {
+  const value = 90.0 + Math.random() * 5.7; // 90.0% a 95.7%
+  return `${value.toFixed(1)}%`;
+};
+
+const generateActiveUsers = () => {
+  return Math.floor(38 + Math.random() * 812); // 38 a 850
+};
+
+const generateLastBatch = () => {
+  return Math.floor(15 + Math.random() * 45); // 15 a 60
+};
+
+// Função para gerar mensagens técnicas com valores dinâmicos
+const getTechMessage = (index: number): string => {
+  switch (index) {
+    case 0:
+      return `⚡ ${generateSignalsProcessed()} signals processed in last 60min`;
+    case 1:
+      return `📊 Model accuracy: ${generateModelAccuracy()} (live tracking)`;
+    case 2:
+      return `🔄 ${generateActiveUsers()} active users analyzing right now`;
+    case 3:
+      return `🎯 Last batch: ${generateLastBatch()} wins detected`;
+    default:
+      return "";
+  }
+};
 
 export default function Step5() {
   const router = useRouter();
@@ -81,7 +108,7 @@ export default function Step5() {
   // Rotacionar mensagens técnicas
   useEffect(() => {
     const msgInterval = setInterval(() => {
-      setCurrentTechMsg((prev) => (prev + 1) % TECH_MESSAGES.length);
+      setCurrentTechMsg((prev) => (prev + 1) % 4); // 4 mensagens diferentes
     }, 8000); // Troca a cada 8 segundos
 
     return () => clearInterval(msgInterval);
@@ -281,6 +308,18 @@ export default function Step5() {
         {/* Linha de separação */}
         <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
 
+        {/* Session Identity - posicionado entre a linha de separação e o Card */}
+        <div className="flex justify-center mb-3">
+          <div
+            className="font-mono text-[9px] text-[#1d8b33]"
+            style={{
+              textShadow: '0 0 4px rgba(29, 139, 51, 0.4)'
+            }}
+          >
+            SESSION {sessionId}
+          </div>
+        </div>
+
         {/* CARD PRINCIPAL DO PREDICTOR - com borda verde e glow sutil */}
         <div
           className="bg-[#111111] rounded-2xl p-6 mb-8 relative"
@@ -425,7 +464,7 @@ export default function Step5() {
                 textShadow: '0 0 4px rgba(29, 139, 51, 0.3)'
               }}
             >
-              {TECH_MESSAGES[currentTechMsg]}
+              {getTechMessage(currentTechMsg)}
             </p>
           </div>
 
@@ -435,18 +474,6 @@ export default function Step5() {
               <div>SYS {systemVersion}</div>
               <div>UPTIME {systemUptime}</div>
               <div>SYNC {lastSync}</div>
-            </div>
-          </div>
-
-          {/* Session Identity - discreto no topo */}
-          <div className="absolute top-4 left-4">
-            <div
-              className="font-mono text-[8px] text-[#1d8b33] opacity-40"
-              style={{
-                textShadow: '0 0 3px rgba(29, 139, 51, 0.2)'
-              }}
-            >
-              SESSION {sessionId}
             </div>
           </div>
 
