@@ -8,11 +8,19 @@ import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
 
 // Estados da máquina
-type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop";
+type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop" | "cooldown";
+
+// Mensagens técnicas rotativas
+const TECH_MESSAGES = [
+  "⚡ 2.4k signals processed in last 60min",
+  "📊 Model accuracy: 94.7% (live tracking)",
+  "🔄 38 active users analyzing right now",
+  "🎯 Last batch: 19 wins detected",
+];
 
 export default function Step5() {
   const router = useRouter();
-  
+
   // Estados do Predictor
   const [state, setState] = useState<PredictorState>("idle");
   const [multiplier, setMultiplier] = useState(1.00);
@@ -20,15 +28,81 @@ export default function Step5() {
   const [logs, setLogs] = useState<string[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // System Status
+  const [systemVersion] = useState("v3.4.2");
+  const [systemUptime, setSystemUptime] = useState("00:00");
+  const [lastSync, setLastSync] = useState("synced");
+
+  // Session Identity
+  const [sessionId] = useState(() => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    return Array.from({ length: 8 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  });
+
+  // Mensagens técnicas rotativas
+  const [currentTechMsg, setCurrentTechMsg] = useState(0);
+
+  // Cooldown
+  const [cooldownRemaining, setCooldownRemaining] = useState(0);
+
   // Verificar sessão ao carregar
   useEffect(() => {
     if (!isSessionActive()) {
       router.push("/");
       return;
     }
-    
+
     updateActivity();
   }, [router]);
+
+  // Atualizar System Status - Uptime
+  useEffect(() => {
+    const startTime = Date.now();
+    const uptimeInterval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const mins = Math.floor(elapsed / 60);
+      const secs = elapsed % 60;
+      setSystemUptime(`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`);
+    }, 1000);
+
+    return () => clearInterval(uptimeInterval);
+  }, []);
+
+  // Atualizar System Status - Last Sync
+  useEffect(() => {
+    const syncInterval = setInterval(() => {
+      setLastSync("syncing...");
+      setTimeout(() => setLastSync("synced"), 800);
+    }, Math.random() * 120000 + 60000); // Entre 1-3 minutos
+
+    return () => clearInterval(syncInterval);
+  }, []);
+
+  // Rotacionar mensagens técnicas
+  useEffect(() => {
+    const msgInterval = setInterval(() => {
+      setCurrentTechMsg((prev) => (prev + 1) % TECH_MESSAGES.length);
+    }, 8000); // Troca a cada 8 segundos
+
+    return () => clearInterval(msgInterval);
+  }, []);
+
+  // Cooldown countdown
+  useEffect(() => {
+    if (cooldownRemaining > 0) {
+      const countdownInterval = setInterval(() => {
+        setCooldownRemaining((prev) => {
+          if (prev <= 1) {
+            setState("idle");
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(countdownInterval);
+    }
+  }, [cooldownRemaining]);
 
   const handleLogout = () => {
     updateActivity();
@@ -67,7 +141,7 @@ export default function Step5() {
     }
   };
 
-  // Animar multiplicador
+  // Animar multiplicador com reforço sensorial proporcional
   const animateMultiplier = (targetValue: number) => {
     setIsAnimating(true);
     const duration = 600; // 0.6 segundos
@@ -78,11 +152,23 @@ export default function Step5() {
     const interval = setInterval(() => {
       currentStep++;
       const newValue = 1.00 + (increment * currentStep);
-      
+
       if (currentStep >= steps) {
         setMultiplier(targetValue);
         setIsAnimating(false);
         clearInterval(interval);
+
+        // Reforço sensorial proporcional ao multiplicador
+        if (targetValue >= 4.61) {
+          // Alto multiplicador: som mais longo e intenso
+          soundManager.playSuccessB();
+          setTimeout(() => soundManager.playSuccessB(), 200);
+        } else if (targetValue >= 2.61) {
+          // Médio multiplicador: som médio
+          soundManager.playSuccessB();
+        } else {
+          // Baixo multiplicador: som padrão (já tocado no handleGetSignal)
+        }
       } else {
         setMultiplier(parseFloat(newValue.toFixed(2)));
       }
@@ -144,22 +230,34 @@ export default function Step5() {
     // Aguardar animação terminar
     await new Promise(resolve => setTimeout(resolve, 700));
 
-    // Som dopaminérgico quando o multiplicador final é revelado
+    // Som dopaminérgico básico (reforço proporcional já está em animateMultiplier)
     soundManager.playSuccessB();
 
     setStatusText("");
     setState("loop");
   };
 
-  // Handler: Get Another Signal
+  // Handler: Get Another Signal com Cooldown Inteligente
   const handleGetAnotherSignal = () => {
     updateActivity();
     // Som de click ao clicar
     soundManager.playClick();
-    setState("idle");
-    setMultiplier(1.00);
-    setStatusText("");
-    setLogs([]);
+
+    // Cooldown inteligente: 30-40% de probabilidade
+    const shouldCooldown = Math.random() < 0.35; // 35% de chance
+
+    if (shouldCooldown) {
+      setState("cooldown");
+      const cooldownTime = Math.floor(Math.random() * 8) + 8; // 8-15 segundos
+      setCooldownRemaining(cooldownTime);
+      setStatusText("⚙️ Recalibrating AI model...");
+      setLogs(["> Model recalibration in progress..."]);
+    } else {
+      setState("idle");
+      setMultiplier(1.00);
+      setStatusText("");
+      setLogs([]);
+    }
   };
 
   return (
@@ -185,7 +283,7 @@ export default function Step5() {
 
         {/* CARD PRINCIPAL DO PREDICTOR - com borda verde e glow sutil */}
         <div
-          className="bg-[#111111] rounded-2xl p-6 mb-8"
+          className="bg-[#111111] rounded-2xl p-6 mb-8 relative"
           style={{
             border: '0.5px solid #1d8b33',
             boxShadow: '0 0 8px rgba(29, 139, 51, 0.3)'
@@ -219,7 +317,17 @@ export default function Step5() {
 
           {/* Multiplicador - aumentado mais 18% (total 48%) e peso 500 */}
           <div className="text-center mb-6">
-            <div className="text-white text-[5.52rem] font-medium">
+            <div
+              className="text-white text-[5.52rem] font-medium transition-all duration-300"
+              style={{
+                textShadow:
+                  multiplier >= 4.61
+                    ? '0 0 20px rgba(45, 255, 87, 0.6), 0 0 40px rgba(45, 255, 87, 0.4)'
+                    : multiplier >= 2.61
+                    ? '0 0 12px rgba(45, 255, 87, 0.4)'
+                    : '0 0 6px rgba(45, 255, 87, 0.2)'
+              }}
+            >
               x{multiplier.toFixed(2)}
             </div>
           </div>
@@ -279,6 +387,18 @@ export default function Step5() {
             </div>
           )}
 
+          {/* Cooldown State */}
+          {state === "cooldown" && (
+            <div className="mb-6">
+              <button
+                disabled
+                className="w-full bg-gray-600 text-gray-300 font-medium py-[9.96px] px-6 rounded-lg cursor-not-allowed opacity-70"
+              >
+                Processing... ({cooldownRemaining}s)
+              </button>
+            </div>
+          )}
+
           {/* Campo de Logs - altura reduzida ~20% */}
           <div className="w-full bg-[#0a0a0a] rounded-lg p-4 h-[9.6rem] overflow-y-auto">
             <div className="font-mono text-xs space-y-1">
@@ -294,6 +414,39 @@ export default function Step5() {
                   {log}
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Mensagens Técnicas Rotativas */}
+          <div className="mt-4 text-center">
+            <p
+              className="text-[#1d8b33] text-[10px] font-mono opacity-60 transition-opacity duration-500"
+              style={{
+                textShadow: '0 0 4px rgba(29, 139, 51, 0.3)'
+              }}
+            >
+              {TECH_MESSAGES[currentTechMsg]}
+            </p>
+          </div>
+
+          {/* System Status - canto inferior direito do card */}
+          <div className="mt-6 flex justify-end">
+            <div className="text-right font-mono text-[9px] text-[#1d8b33] opacity-50 space-y-0.5">
+              <div>SYS {systemVersion}</div>
+              <div>UPTIME {systemUptime}</div>
+              <div>SYNC {lastSync}</div>
+            </div>
+          </div>
+
+          {/* Session Identity - discreto no topo */}
+          <div className="absolute top-4 left-4">
+            <div
+              className="font-mono text-[8px] text-[#1d8b33] opacity-40"
+              style={{
+                textShadow: '0 0 3px rgba(29, 139, 51, 0.2)'
+              }}
+            >
+              SESSION {sessionId}
             </div>
           </div>
 
