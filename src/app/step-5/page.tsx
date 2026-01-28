@@ -10,36 +10,81 @@ import { soundManager } from "@/lib/sounds";
 // Estados da máquina
 type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop" | "cooldown";
 
-// Geradores de valores dinâmicos para mensagens técnicas
-const generateSignalsProcessed = () => {
-  const value = 1.5 + Math.random() * 2.3; // 1.5k a 3.8k
-  return `${value.toFixed(1)}k`;
-};
+// Sistema de variação gradual para mensagens técnicas
+class GradualMetrics {
+  private signalsValue: number = 2.5; // Inicia no meio do range (1.5-3.8)
+  private accuracyValue: number = 92.8; // Inicia no meio do range (90.0-95.7)
+  private usersValue: number = 450; // Inicia no meio do range (38-850)
+  private batchValue: number = 38; // Inicia no meio do range (15-60)
 
-const generateModelAccuracy = () => {
-  const value = 90.0 + Math.random() * 5.7; // 90.0% a 95.7%
-  return `${value.toFixed(1)}%`;
-};
+  // Signals: 1.5k a 3.8k, variação ±0.1k a ±0.4k
+  updateSignals(): string {
+    const variation = (Math.random() - 0.5) * 0.8; // -0.4 a +0.4
+    this.signalsValue += variation;
 
-const generateActiveUsers = () => {
-  return Math.floor(38 + Math.random() * 812); // 38 a 850
-};
+    // Força suave de retorno ao centro
+    if (this.signalsValue < 1.5) this.signalsValue = 1.5 + 0.1;
+    if (this.signalsValue > 3.8) this.signalsValue = 3.8 - 0.1;
 
-const generateLastBatch = () => {
-  return Math.floor(15 + Math.random() * 45); // 15 a 60
-};
+    return `${this.signalsValue.toFixed(1)}k`;
+  }
+
+  // Model accuracy: 90.0% a 95.7%, variação ±0.1% a ±0.2%
+  updateAccuracy(): string {
+    // 50% de chance de não mudar nada (estabilidade)
+    if (Math.random() < 0.5) {
+      return `${this.accuracyValue.toFixed(1)}%`;
+    }
+
+    const variation = (Math.random() - 0.5) * 0.4; // -0.2 a +0.2
+    this.accuracyValue += variation;
+
+    // Limites rígidos
+    if (this.accuracyValue < 90.0) this.accuracyValue = 90.0;
+    if (this.accuracyValue > 95.7) this.accuracyValue = 95.7;
+
+    return `${this.accuracyValue.toFixed(1)}%`;
+  }
+
+  // Active users: 38 a 850, variação ±2 a ±10
+  updateUsers(): number {
+    const variation = Math.floor((Math.random() - 0.5) * 20); // -10 a +10
+    this.usersValue += variation;
+
+    // Limites
+    if (this.usersValue < 38) this.usersValue = 38;
+    if (this.usersValue > 850) this.usersValue = 850;
+
+    return Math.floor(this.usersValue);
+  }
+
+  // Last batch: 15 a 60, variação ±3 a ±8
+  updateBatch(): number {
+    const variation = Math.floor((Math.random() - 0.5) * 16); // -8 a +8
+    this.batchValue += variation;
+
+    // Limites
+    if (this.batchValue < 15) this.batchValue = 15;
+    if (this.batchValue > 60) this.batchValue = 60;
+
+    return Math.floor(this.batchValue);
+  }
+}
+
+// Instância global do gerenciador de métricas
+const metricsManager = new GradualMetrics();
 
 // Função para gerar mensagens técnicas com valores dinâmicos
 const getTechMessage = (index: number): string => {
   switch (index) {
     case 0:
-      return `⚡ ${generateSignalsProcessed()} signals processed in last 60min`;
+      return `⚡ ${metricsManager.updateSignals()} signals processed in last 60min`;
     case 1:
-      return `📊 Model accuracy: ${generateModelAccuracy()} (live tracking)`;
+      return `📊 Model accuracy: ${metricsManager.updateAccuracy()} (live tracking)`;
     case 2:
-      return `🔄 ${generateActiveUsers()} active users analyzing right now`;
+      return `🔄 ${metricsManager.updateUsers()} active users analyzing right now`;
     case 3:
-      return `🎯 Last batch: ${generateLastBatch()} wins detected`;
+      return `🎯 Last batch: ${metricsManager.updateBatch()} wins detected`;
     default:
       return "";
   }
