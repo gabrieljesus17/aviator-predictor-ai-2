@@ -38,7 +38,7 @@ export default function Step5() {
 
   const handleVoltar = () => {
     updateActivity();
-    router.push("/step-4");
+    router.push("/step-3");
   };
 
   // Função para adicionar logs sequencialmente
@@ -206,7 +206,7 @@ export default function Step5() {
 
             <button
               onClick={() => updateActivity()}
-              className="bg-black border border-[#ff8c00] text-[#ff8c00] px-3 py-[6px] rounded-lg text-[10.78px] font-medium hover:bg-[#ff8c00] hover:text-black transition-colors"
+              className="bg-black border border-[#ff8c00] text-[#ff8c00] px-[14.4px] py-[7.2px] rounded-lg text-[12.94px] font-medium hover:bg-[#ff8c00] hover:text-black transition-colors"
             >
               HOW TO USE PREDICTOR
             </button>
@@ -217,9 +217,9 @@ export default function Step5() {
             Aviator AI PREDICTOR
           </h1>
 
-          {/* Multiplicador - aumentado 30% e peso 500 */}
+          {/* Multiplicador - aumentado mais 18% (total 48%) e peso 500 */}
           <div className="text-center mb-6">
-            <div className="text-white text-[4.68rem] font-medium">
+            <div className="text-white text-[5.52rem] font-medium">
               x{multiplier.toFixed(2)}
             </div>
           </div>
