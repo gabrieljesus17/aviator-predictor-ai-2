@@ -118,6 +118,7 @@ export default function Step5() {
   const [statusText, setStatusText] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showHowToUseModal, setShowHowToUseModal] = useState(false);
 
   // System Status
   const [systemVersion] = useState("v3.4.2");
@@ -285,7 +286,7 @@ export default function Step5() {
       "> SUCCESS: Bet parameters calculated."
     ];
 
-    await addLogsSequentially(betLogs, 800);
+    await addLogsSequentially(betLogs, 500);
 
     // Após última linha, mudar status e desbloquear Get Signal
     setStatusText("Bet an amount from 10 ZMW to 50 ZMW");
@@ -312,7 +313,7 @@ export default function Step5() {
       "> SUCCESS: Multiplier signal acquired."
     ];
 
-    await addLogsSequentially(signalLogs, 500);
+    await addLogsSequentially(signalLogs, 300);
 
     // Após última linha, animar multiplicador
     const targetMultiplier = generateMultiplier();
@@ -406,7 +407,10 @@ export default function Step5() {
             </button>
 
             <button
-              onClick={() => updateActivity()}
+              onClick={() => {
+                updateActivity();
+                setShowHowToUseModal(true);
+              }}
               className="bg-black border border-[#ff8c00] text-[#ff8c00] px-[14.4px] py-[7.2px] rounded-lg text-[12.94px] font-medium hover:bg-[#ff8c00] hover:text-black transition-colors"
             >
               HOW TO USE PREDICTOR
@@ -508,11 +512,15 @@ export default function Step5() {
               {logs.map((log, index) => (
                 <div
                   key={index}
-                  className={
+                  className={`animate-fade-in ${
                     log.includes("SUCCESS")
                       ? "text-[#2dff57]"
                       : "text-[#a4cbc8]"
-                  }
+                  }`}
+                  style={{
+                    animationDuration: '0.3s',
+                    animationFillMode: 'both'
+                  }}
                 >
                   {log}
                 </div>
@@ -544,6 +552,51 @@ export default function Step5() {
         </div>
 
       </div>
+
+      {/* Pop-up Modal - How to Use Predictor */}
+      {showHowToUseModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowHowToUseModal(false)}
+        >
+          {/* Backdrop com blur */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+          {/* Modal Card */}
+          <div
+            className="relative w-full max-w-4xl bg-[#111111] rounded-2xl overflow-hidden"
+            style={{
+              aspectRatio: '16 / 9',
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 0 40px rgba(45, 255, 87, 0.15)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Botão Fechar */}
+            <button
+              onClick={() => setShowHowToUseModal(false)}
+              className="absolute top-4 right-4 z-10 text-white/60 hover:text-white transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Conteúdo do Modal */}
+            <div className="w-full h-full flex items-center justify-center p-8">
+              <div className="text-center space-y-4">
+                <div className="text-white/40 text-sm font-mono">
+                  Video preview space
+                </div>
+                <div className="text-white/60 text-xs font-mono">
+                  (Video link will be added here)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
