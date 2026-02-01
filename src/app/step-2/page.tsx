@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { grantAccess, updateActivity, isSessionActive } from "@/lib/session";
 import { Unlock } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
+import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
 
 export default function Step2() {
   const router = useRouter();
@@ -124,8 +125,16 @@ export default function Step2() {
               <Unlock className="w-5 h-5" />
               VALIDATE
             </button>
+
+            {/* Mensagem técnica de escassez */}
+            <p className="text-gray-400/70 text-xs text-center mt-3">
+              Due to high demand, access codes are rate-limited to 50 new users per hour.
+            </p>
           </div>
         </div>
+
+        {/* Mini Live Activity - versão passiva e reduzida */}
+        <MiniLiveActivity />
 
         {/* Texto informativo - aumentado 1px */}
         <p className="text-gray-400 text-[15px] text-center mt-2">
