@@ -141,7 +141,7 @@ export default function Step2() {
 
         {/* Texto informativo - copy atualizado */}
         <p className="text-gray-400 text-[15px] text-center">
-          Don't have an access code yet? Get yours below.
+          If you haven't gotten your access code yet, request it to unlock full access.
         </p>
 
         {/* Botão GET MY ACCESS CODE - largura reduzida 30% */}
