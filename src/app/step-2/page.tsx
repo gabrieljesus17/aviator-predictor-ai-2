@@ -136,9 +136,12 @@ export default function Step2() {
         {/* Mini Live Activity - versão passiva e reduzida */}
         <MiniLiveActivity />
 
-        {/* Texto informativo - aumentado 1px */}
-        <p className="text-gray-400 text-[15px] text-center mt-2">
-          If you haven't gotten your access code yet, click the button below.
+        {/* Linha de separação */}
+        <div className="w-full h-[1px] bg-[#2dff57]/20 my-4"></div>
+
+        {/* Texto informativo - copy atualizado */}
+        <p className="text-gray-400 text-[15px] text-center">
+          Don't have an access code yet? Get yours below.
         </p>
 
         {/* Botão GET MY ACCESS CODE - largura reduzida 30% */}
