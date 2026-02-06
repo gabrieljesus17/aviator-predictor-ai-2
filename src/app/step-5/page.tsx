@@ -6,6 +6,7 @@ import { LogOut } from "lucide-react";
 import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
+import { useCountry } from "@/contexts/CountryContext";
 
 // Estados da máquina
 type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop" | "cooldown";
@@ -111,6 +112,7 @@ const getTechMessage = (index: number): string => {
 
 export default function Step5() {
   const router = useRouter();
+  const { selectedCountry } = useCountry();
 
   // Estados do Predictor
   const [state, setState] = useState<PredictorState>("idle");
@@ -289,7 +291,11 @@ export default function Step5() {
     await addLogsSequentially(betLogs, 500);
 
     // Após última linha, mudar status e desbloquear Get Signal
-    setStatusText("Bet an amount from 10 ZMW to 50 ZMW");
+    // Texto dinâmico com valores do país selecionado
+    const betMin = selectedCountry?.betAmountRange.min || 10;
+    const betMax = selectedCountry?.betAmountRange.max || 50;
+    const currency = selectedCountry?.currencySymbol || 'ZMW';
+    setStatusText(`Bet an amount from ${betMin} ${currency} to ${betMax} ${currency}`);
     setState("bet-ready");
   };
 
@@ -357,7 +363,18 @@ export default function Step5() {
       <div className="w-full max-w-md mx-auto px-4 py-6">
         
         {/* Barra Superior */}
-        <div className="flex justify-end items-center mb-8">
+        <div className="flex justify-between items-center mb-8">
+          {/* Botão Support */}
+          <a
+            href="https://wa.link/nbyrnx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
+          >
+            Support
+          </a>
+
+          {/* Botão Logout */}
           <button
             onClick={handleLogout}
             className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
@@ -585,14 +602,23 @@ export default function Step5() {
 
             {/* Conteúdo do Modal */}
             <div className="w-full h-full flex items-center justify-center p-8">
-              <div className="text-center space-y-4">
-                <div className="text-white/40 text-sm font-mono">
-                  Video preview space
+              {selectedCountry?.videoLinks.step5 ? (
+                <iframe
+                  src={selectedCountry.videoLinks.step5}
+                  className="w-full h-full rounded-lg"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="text-center space-y-4">
+                  <div className="text-white/40 text-sm font-mono">
+                    Video preview space
+                  </div>
+                  <div className="text-white/60 text-xs font-mono">
+                    (Video link will be added here)
+                  </div>
                 </div>
-                <div className="text-white/60 text-xs font-mono">
-                  (Video link will be added here)
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { isSessionActive, updateActivity } from "@/lib/session";
+import { useCountry } from "@/contexts/CountryContext";
+import CountrySelector from "@/components/custom/CountrySelector";
 
 export default function Home() {
   const router = useRouter();
+  const { isCountrySelected } = useCountry();
+  const [showCountrySelector, setShowCountrySelector] = useState(false);
 
   // Verificar se já tem sessão ativa e redirecionar para step-3
   useEffect(() => {
@@ -14,6 +17,19 @@ export default function Home() {
       router.push("/step-3");
     }
   }, [router]);
+
+  const handleGetSignals = () => {
+    updateActivity();
+
+    // Abrir modal de seleção de país
+    setShowCountrySelector(true);
+  };
+
+  const handleCountrySelected = () => {
+    setShowCountrySelector(false);
+    // Após selecionar país, navegar para step-2
+    router.push("/step-2");
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#0a0a0a]">
@@ -32,14 +48,19 @@ export default function Home() {
         </h1>
 
         {/* Botão principal responsivo */}
-        <Link 
-          href="/step-2"
-          onClick={() => updateActivity()}
+        <button
+          onClick={handleGetSignals}
           className="w-[50%] aspect-[4/1] bg-black text-[#2dff57] text-base sm:text-lg font-semibold rounded-lg border border-[#2dff57] hover:bg-[#0a0a0a] transition-all duration-300 flex items-center justify-center shadow-lg backdrop-blur-sm"
         >
           GET AI SIGNALS
-        </Link>
+        </button>
       </div>
+
+      {/* Modal de Seleção de País */}
+      <CountrySelector
+        isOpen={showCountrySelector}
+        onClose={handleCountrySelected}
+      />
     </div>
   );
 }

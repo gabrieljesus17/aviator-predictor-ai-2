@@ -6,9 +6,11 @@ import { grantAccess, updateActivity, isSessionActive } from "@/lib/session";
 import { Unlock } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
+import { useCountry } from "@/contexts/CountryContext";
 
 export default function Step2() {
   const router = useRouter();
+  const { selectedCountry } = useCountry();
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
   const [showPopup, setShowPopup] = useState(false);
@@ -145,11 +147,23 @@ export default function Step2() {
         </p>
 
         {/* Botão GET MY ACCESS CODE - largura reduzida 30% */}
-        <button
-          className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"
-        >
-          GET MY ACCESS CODE
-        </button>
+        {selectedCountry?.accessCodeLink ? (
+          <a
+            href={selectedCountry.accessCodeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"
+          >
+            GET MY ACCESS CODE
+          </a>
+        ) : (
+          <button
+            disabled
+            className="w-[70%] py-3 bg-black text-[#ff8c00]/50 border border-[#ff8c00]/50 text-base font-semibold rounded-lg cursor-not-allowed flex items-center justify-center opacity-60"
+          >
+            GET MY ACCESS CODE
+          </button>
+        )}
       </div>
 
       {/* Pop-up de transição */}

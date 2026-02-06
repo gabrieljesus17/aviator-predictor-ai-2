@@ -2,23 +2,36 @@
 
 import { useEffect, useState, useRef, memo } from "react";
 import { LiveCard } from "@/lib/session";
+import { useCountry } from "@/contexts/CountryContext";
 
 function LiveStudentsMenu() {
   const [visibleCards, setVisibleCards] = useState<LiveCard[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const { selectedCountry } = useCountry();
 
-  // Função para gerar valor aleatório com distribuição específica
+  // Função para gerar valor aleatório com distribuição específica baseada no país
   const generateRandomAmount = (): number => {
-    const rand = Math.random();
+    // Usar país selecionado ou fallback para Zambia
+    const config = selectedCountry || {
+      valueDistribution: {
+        range1: { percent: 25, min: 800, max: 5000 },
+        range2: { percent: 30, min: 5001, max: 20000 },
+        range3: { percent: 30, min: 20001, max: 45000 },
+        range4: { percent: 15, min: 45001, max: 60000 },
+      }
+    };
 
-    if (rand < 0.25) {
-      return Math.floor(Math.random() * (5000 - 800 + 1)) + 800;
-    } else if (rand < 0.55) {
-      return Math.floor(Math.random() * (20000 - 5001 + 1)) + 5001;
-    } else if (rand < 0.85) {
-      return Math.floor(Math.random() * (45000 - 20001 + 1)) + 20001;
+    const rand = Math.random() * 100;
+    const dist = config.valueDistribution;
+
+    if (rand < dist.range1.percent) {
+      return Math.floor(Math.random() * (dist.range1.max - dist.range1.min + 1)) + dist.range1.min;
+    } else if (rand < (dist.range1.percent + dist.range2.percent)) {
+      return Math.floor(Math.random() * (dist.range2.max - dist.range2.min + 1)) + dist.range2.min;
+    } else if (rand < (dist.range1.percent + dist.range2.percent + dist.range3.percent)) {
+      return Math.floor(Math.random() * (dist.range3.max - dist.range3.min + 1)) + dist.range3.min;
     } else {
-      return Math.floor(Math.random() * (60000 - 45001 + 1)) + 45001;
+      return Math.floor(Math.random() * (dist.range4.max - dist.range4.min + 1)) + dist.range4.min;
     }
   };
 
@@ -40,7 +53,15 @@ function LiveStudentsMenu() {
 
   // Função para formatar valor com separador de milhar usando ponto
   const formatAmount = (amount: number): string => {
-    return `${amount.toLocaleString('en-US').replace(/,/g, '.')} ZMW`;
+    const currencySymbol = selectedCountry?.currencySymbol || 'ZMW';
+
+    // Para moedas com casas decimais (USD em OTHER)
+    if (selectedCountry?.currencyCode === 'USD') {
+      return `${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${currencySymbol}`;
+    }
+
+    // Para outras moedas inteiras
+    return `${amount.toLocaleString('en-US').replace(/,/g, '.')} ${currencySymbol}`;
   };
 
   // Função para agendar próxima geração

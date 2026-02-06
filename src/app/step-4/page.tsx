@@ -6,9 +6,11 @@ import { LogOut } from "lucide-react";
 import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
+import { useCountry } from "@/contexts/CountryContext";
 
 export default function Step4() {
   const router = useRouter();
+  const { selectedCountry } = useCountry();
 
   // Verificar sessão ao carregar
   useEffect(() => {
@@ -40,7 +42,18 @@ export default function Step4() {
       <div className="w-full max-w-md mx-auto px-4 py-6">
         
         {/* Barra Superior */}
-        <div className="flex justify-end items-center mb-8">
+        <div className="flex justify-between items-center mb-8">
+          {/* Botão Support */}
+          <a
+            href="https://wa.link/nbyrnx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
+          >
+            Support
+          </a>
+
+          {/* Botão Logout */}
           <button
             onClick={handleLogout}
             className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
@@ -83,10 +96,21 @@ export default function Step4() {
 
           {/* Card Central */}
           <div className="w-full bg-[#121212] rounded-2xl overflow-hidden mb-6">
-            {/* Espaço reservado para vídeo futuro */}
-            <div className="w-full h-64 bg-[#1a1a1a] flex items-center justify-center">
-              <span className="text-[#4a4a4a] text-sm">Espaço reservado para vídeo</span>
-            </div>
+            {/* Vídeo ou espaço reservado */}
+            {selectedCountry?.videoLinks.step4 ? (
+              <div className="w-full h-64">
+                <iframe
+                  src={selectedCountry.videoLinks.step4}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <div className="w-full h-64 bg-[#1a1a1a] flex items-center justify-center">
+                <span className="text-[#4a4a4a] text-sm">Espaço reservado para vídeo</span>
+              </div>
+            )}
           </div>
 
           {/* Botão de Confirmação */}
