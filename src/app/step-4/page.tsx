@@ -7,10 +7,12 @@ import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
 import { useCountry } from "@/contexts/CountryContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Step4() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
+  const { t } = useTranslation();
 
   // Verificar sessão ao carregar
   useEffect(() => {
@@ -86,12 +88,12 @@ export default function Step4() {
         <div className="flex flex-col items-center">
           {/* Título Principal */}
           <h1 className="text-white text-[23.52px] font-medium text-center mb-4 mt-6">
-            First, find the "Aviator" game
+            {t('find_aviator_game')}
           </h1>
 
           {/* Subtítulo */}
           <p className="text-[#b0b0b0] text-sm text-center mb-6">
-            HOW TO FIND AVIATOR ON <span className="text-white" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.6)' }}>BETWINNER</span>
+            {t('how_to_find_aviator')} <span className="text-white" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.6)' }}>BETWINNER</span>
           </p>
 
           {/* Card Central */}

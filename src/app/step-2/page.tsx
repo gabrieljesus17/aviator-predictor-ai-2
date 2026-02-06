@@ -7,14 +7,16 @@ import { Unlock } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
 import { useCountry } from "@/contexts/CountryContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Step2() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
+  const { t } = useTranslation();
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [popupText, setPopupText] = useState("Decrypting...");
+  const [popupText, setPopupText] = useState("");
 
   // Verificar se já tem acesso e redirecionar
   useEffect(() => {
@@ -32,11 +34,11 @@ export default function Step2() {
     if (accessCode === "1898") {
       setError("");
       setShowPopup(true);
-      setPopupText("Decrypting...");
+      setPopupText(t('decrypting'));
 
       // Após 2.5s mudar texto e redirecionar
       setTimeout(() => {
-        setPopupText("ACCESS GRANTED");
+        setPopupText(t('access_granted'));
         // Som de sucesso A quando ACCESS GRANTED aparece
         soundManager.playSuccessA();
         setTimeout(() => {
@@ -90,12 +92,12 @@ export default function Step2() {
           <div className="relative z-10 w-full flex flex-col items-center gap-5">
             {/* Título */}
             <h1 className="text-3xl sm:text-4xl font-bold text-white text-center tracking-wide">
-              UNLOCK AI ACCESS
+              {t('unlock_ai_access')}
             </h1>
 
             {/* Texto de instrução */}
             <p className="text-gray-400 text-base sm:text-lg text-center">
-              Enter your access code to continue
+              {t('enter_access_code')}
             </p>
 
             {/* Campo de input responsivo com teclado numérico */}
@@ -104,7 +106,7 @@ export default function Step2() {
                 type="tel"
                 inputMode="numeric"
                 pattern="[0-9]*"
-                placeholder="Access Code"
+                placeholder={t('access_code')}
                 value={accessCode}
                 onChange={(e) => setAccessCode(e.target.value)}
                 onKeyPress={handleKeyPress}
@@ -125,12 +127,12 @@ export default function Step2() {
               className="w-full py-[14.08px] bg-[#2dff57] text-black text-lg font-bold rounded-lg hover:bg-[#20c64e] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
             >
               <Unlock className="w-5 h-5" />
-              VALIDATE
+              {t('validate')}
             </button>
 
             {/* Mensagem técnica de escassez */}
             <p className="text-gray-400/70 text-xs text-center mt-3">
-              Due to high demand, access codes are rate-limited to 50 new users per hour.
+              {t('high_demand_message')}
             </p>
           </div>
         </div>
@@ -143,7 +145,7 @@ export default function Step2() {
 
         {/* Texto informativo - copy atualizado */}
         <p className="text-gray-400 text-[15px] text-center">
-          If you haven't gotten your access code yet, request it to unlock full access.
+          {t('access_code_info')}
         </p>
 
         {/* Botão GET MY ACCESS CODE - largura reduzida 30% */}
@@ -154,14 +156,14 @@ export default function Step2() {
             rel="noopener noreferrer"
             className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"
           >
-            GET MY ACCESS CODE
+            {t('get_my_access_code')}
           </a>
         ) : (
           <button
             disabled
             className="w-[70%] py-3 bg-black text-[#ff8c00]/50 border border-[#ff8c00]/50 text-base font-semibold rounded-lg cursor-not-allowed flex items-center justify-center opacity-60"
           >
-            GET MY ACCESS CODE
+            {t('get_my_access_code')}
           </button>
         )}
       </div>
@@ -170,9 +172,9 @@ export default function Step2() {
       {showPopup && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-[#1a1a1a] border border-[#2dff57] rounded-xl p-12 sm:p-16 md:p-20 backdrop-blur-md shadow-2xl">
-            <p 
+            <p
               className={`text-[#2dff57] text-2xl sm:text-3xl font-bold text-center ${
-                popupText === "Decrypting..." ? "animate-pulse" : ""
+                popupText === t('decrypting') ? "animate-pulse" : ""
               }`}
             >
               {popupText}

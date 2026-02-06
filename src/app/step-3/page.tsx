@@ -6,9 +6,11 @@ import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import { LogOut } from "lucide-react";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Step3() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   // Verificar sessão ao carregar
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function Step3() {
             rel="noopener noreferrer"
             className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
           >
-            Support
+            {t('support')}
           </a>
 
           {/* Botão Logout */}
@@ -52,7 +54,7 @@ export default function Step3() {
             className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
           >
             <LogOut className="w-4 h-4" />
-            Logout
+            {t('logout')}
           </button>
         </div>
 
@@ -67,7 +69,7 @@ export default function Step3() {
           <div className="flex items-center justify-center mb-6 gap-4">
             <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
             <h2 className="text-[1.7rem] font-normal text-[#2dff57] text-center whitespace-nowrap">
-              AI SIGNALS
+              {t('ai_signals')}
             </h2>
             <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
           </div>
@@ -93,7 +95,7 @@ export default function Step3() {
 
             {/* Parte inferior - conteúdo */}
             <div className="p-6 flex flex-col items-center gap-3">
-              <h3 
+              <h3
                 className="text-[#2dff57] text-[1.4rem] font-medium text-center"
                 style={{
                   backdropFilter: 'blur(2px)'
@@ -114,7 +116,7 @@ export default function Step3() {
                 onClick={handleActivate}
                 className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-6 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-colors"
               >
-                ACTIVATE
+                {t('activate')}
               </button>
             </div>
           </div>

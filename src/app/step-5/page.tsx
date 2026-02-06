@@ -277,7 +277,7 @@ export default function Step5() {
     // Som de click ao clicar
     soundManager.playClick();
     setState("analyzing-bet");
-    setStatusText("Analyzing data…");
+    setStatusText("{t('analyzing_data')}");
 
     const betLogs = [
       "> Connecting to data stream...",
@@ -307,7 +307,7 @@ export default function Step5() {
     // Som de click ao clicar
     soundManager.playClick();
     setState("analyzing-signal");
-    setStatusText("Analyzing data…");
+    setStatusText("{t('analyzing_data')}");
     setLogs([]);
 
     const signalLogs = [

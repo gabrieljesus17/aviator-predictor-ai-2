@@ -3,11 +3,13 @@
 import { useEffect, useState, useRef, memo } from "react";
 import { LiveCard } from "@/lib/session";
 import { useCountry } from "@/contexts/CountryContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 function LiveStudentsMenu() {
   const [visibleCards, setVisibleCards] = useState<LiveCard[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const { selectedCountry } = useCountry();
+  const { t } = useTranslation();
 
   // Função para gerar valor aleatório com distribuição específica baseada no país
   const generateRandomAmount = (): number => {
@@ -115,9 +117,9 @@ function LiveStudentsMenu() {
   return (
     <div className="mb-6">
       <div className="flex items-center justify-center gap-2 mb-4">
-        <h2 className="text-base font-medium text-white">MY STUDENTS</h2>
+        <h2 className="text-base font-medium text-white">{t('my_students')}</h2>
         <span className="bg-[#eb0f0f] text-white text-xs px-2 py-0.5 rounded-full font-medium">
-          LIVE
+          {t('live')}
         </span>
       </div>
 

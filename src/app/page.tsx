@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { isSessionActive, updateActivity } from "@/lib/session";
 import { useCountry } from "@/contexts/CountryContext";
 import CountrySelector from "@/components/custom/CountrySelector";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Home() {
   const router = useRouter();
   const { isCountrySelected } = useCountry();
+  const { t } = useTranslation();
   const [showCountrySelector, setShowCountrySelector] = useState(false);
 
   // Verificar se já tem sessão ativa e redirecionar para step-3
@@ -52,7 +54,7 @@ export default function Home() {
           onClick={handleGetSignals}
           className="w-[50%] aspect-[4/1] bg-black text-[#2dff57] text-base sm:text-lg font-semibold rounded-lg border border-[#2dff57] hover:bg-[#0a0a0a] transition-all duration-300 flex items-center justify-center shadow-lg backdrop-blur-sm"
         >
-          GET AI SIGNALS
+          {t('get_ai_signals')}
         </button>
       </div>
 
