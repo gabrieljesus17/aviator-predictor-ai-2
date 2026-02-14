@@ -52,7 +52,7 @@ export default function Step4() {
             rel="noopener noreferrer"
             className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
           >
-            Support
+            {t('support')}
           </a>
 
           {/* Botão Logout */}
@@ -61,7 +61,7 @@ export default function Step4() {
             className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
           >
             <LogOut className="w-4 h-4" />
-            Logout
+            {t('logout')}
           </button>
         </div>
 
@@ -80,7 +80,7 @@ export default function Step4() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back
+            {t('back')}
           </button>
         </div>
 
@@ -120,7 +120,7 @@ export default function Step4() {
             onClick={handleEncontreiJogo}
             className="w-full bg-[#2dff57] text-black font-medium py-3 px-6 rounded-lg hover:bg-[#26e04d] transition-colors"
           >
-            I FOUND THE GAME
+            {t('i_found_game')}
           </button>
         </div>
 

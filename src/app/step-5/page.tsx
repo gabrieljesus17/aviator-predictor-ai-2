@@ -7,6 +7,7 @@ import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
 import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
 import { useCountry } from "@/contexts/CountryContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 // Estados da máquina
 type PredictorState = "idle" | "analyzing-bet" | "bet-ready" | "analyzing-signal" | "signal-ready" | "loop" | "cooldown";
@@ -113,6 +114,7 @@ const getTechMessage = (index: number): string => {
 export default function Step5() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
+  const { t } = useTranslation();
 
   // Estados do Predictor
   const [state, setState] = useState<PredictorState>("idle");
@@ -277,7 +279,7 @@ export default function Step5() {
     // Som de click ao clicar
     soundManager.playClick();
     setState("analyzing-bet");
-    setStatusText("{t('analyzing_data')}");
+    setStatusText(t('analyzing_data'));
 
     const betLogs = [
       "> Connecting to data stream...",
@@ -307,7 +309,7 @@ export default function Step5() {
     // Som de click ao clicar
     soundManager.playClick();
     setState("analyzing-signal");
-    setStatusText("{t('analyzing_data')}");
+    setStatusText(t('analyzing_data'));
     setLogs([]);
 
     const signalLogs = [
@@ -348,7 +350,7 @@ export default function Step5() {
       setState("cooldown");
       const cooldownTime = Math.floor(Math.random() * 8) + 8; // 8-15 segundos
       setCooldownRemaining(cooldownTime);
-      setStatusText("⚙️ Recalibrating AI model...");
+      setStatusText(t('recalibrating_ai'));
       setLogs(["> Model recalibration in progress..."]);
     } else {
       setState("idle");
@@ -371,7 +373,7 @@ export default function Step5() {
             rel="noopener noreferrer"
             className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
           >
-            Support
+            {t('support')}
           </a>
 
           {/* Botão Logout */}
@@ -380,7 +382,7 @@ export default function Step5() {
             className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
           >
             <LogOut className="w-4 h-4" />
-            Logout
+            {t('logout')}
           </button>
         </div>
 
@@ -420,7 +422,7 @@ export default function Step5() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Back
+              {t('back')}
             </button>
 
             <button
@@ -430,7 +432,7 @@ export default function Step5() {
               }}
               className="bg-black border border-[#ff8c00] text-[#ff8c00] px-[14.4px] py-[7.2px] rounded-lg text-[12.94px] font-medium hover:bg-[#ff8c00] hover:text-black transition-colors"
             >
-              HOW TO USE PREDICTOR
+              {t('how_to_use_predictor')}
             </button>
           </div>
 
@@ -482,7 +484,7 @@ export default function Step5() {
                     : "bg-[#2dff57] text-black opacity-60 cursor-not-allowed"
                 }`}
               >
-                Get Bet Size
+                {t('get_bet_size')}
               </button>
 
               <button
@@ -494,7 +496,7 @@ export default function Step5() {
                     : "bg-gray-500 text-gray-300 cursor-not-allowed"
                 }`}
               >
-                Get Signal
+                {t('get_signal')}
               </button>
             </div>
           )}
@@ -506,7 +508,7 @@ export default function Step5() {
                 onClick={handleGetAnotherSignal}
                 className="w-full bg-[#ffd400] text-black font-medium py-[9.96px] px-6 rounded-lg hover:bg-[#ffcc00] transition-colors"
               >
-                Get another Signal
+                {t('get_another_signal')}
               </button>
             </div>
           )}
@@ -518,7 +520,7 @@ export default function Step5() {
                 disabled
                 className="w-full bg-gray-600 text-gray-300 font-medium py-[9.96px] px-6 rounded-lg cursor-not-allowed opacity-70"
               >
-                Processing... ({cooldownRemaining}s)
+                {t('processing')} ({cooldownRemaining}s)
               </button>
             </div>
           )}

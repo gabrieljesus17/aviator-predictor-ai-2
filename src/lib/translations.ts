@@ -50,7 +50,9 @@ export type TranslationKey =
   | 'get_bet_size'
   | 'get_signal'
   | 'analyzing_data'
-  | 'get_another_signal';
+  | 'get_another_signal'
+  | 'recalibrating_ai'
+  | 'processing';
 
 // Objeto de traduções
 export const translations: Record<Language, Record<TranslationKey, string>> = {
@@ -85,6 +87,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_signal: 'Get Signal',
     analyzing_data: 'Analyzing data…',
     get_another_signal: 'Get another Signal',
+    recalibrating_ai: '⚙️ Recalibrating AI model...',
+    processing: 'Processing...',
   },
   bn: {
     // Step-1
@@ -117,6 +121,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_signal: 'সিগন্যাল পান',
     analyzing_data: 'ডেটা বিশ্লেষণ করা হচ্ছে…',
     get_another_signal: 'আরেকটি সিগন্যাল পান',
+    recalibrating_ai: '⚙️ এআই মডেল পুনঃক্রমাঙ্কন করা হচ্ছে...',
+    processing: 'প্রক্রিয়াকরণ...',
   },
   tr: {
     // Step-1
@@ -149,6 +155,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_signal: 'Sinyal Al',
     analyzing_data: 'Veriler analiz ediliyor…',
     get_another_signal: 'Başka Bir Sinyal Al',
+    recalibrating_ai: '⚙️ Yapay Zeka modeli yeniden kalibre ediliyor...',
+    processing: 'İşleniyor...',
   },
   pt: {
     // Step-1
@@ -181,6 +189,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_signal: 'Obter Sinal',
     analyzing_data: 'A analisar dados…',
     get_another_signal: 'Obter Outro Sinal',
+    recalibrating_ai: '⚙️ A recalibrar modelo IA...',
+    processing: 'A processar...',
   },
   id: {
     // Step-1
@@ -213,5 +223,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_signal: 'Dapatkan Sinyal',
     analyzing_data: 'Menganalisis data…',
     get_another_signal: 'Dapatkan Sinyal Lain',
+    recalibrating_ai: '⚙️ Mengkalibrasi ulang model AI...',
+    processing: 'Memproses...',
   },
 };
