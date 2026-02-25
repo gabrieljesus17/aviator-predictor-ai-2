@@ -44,7 +44,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 10,
       max: 100,
     },
-    accessCodeLink: null,
+    accessCodeLink: 'https://chat.whatsapp.com/Ck2k9k41NCO2JAdiXPabmA',
     videoLinks: {
       step4: null,
       step5: null,
@@ -68,7 +68,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     },
     accessCodeLink: null,
     videoLinks: {
-      step4: null,
+      step4: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
       step5: null,
     },
   },
@@ -88,7 +88,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 4,
       max: 60,
     },
-    accessCodeLink: null,
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
     videoLinks: {
       step4: null,
       step5: null,
