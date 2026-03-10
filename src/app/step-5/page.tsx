@@ -603,23 +603,18 @@ export default function Step5() {
             </button>
 
             {/* Conteúdo do Modal */}
-            <div className="w-full h-full flex items-center justify-center p-8">
+            <div className="w-full h-full">
               {selectedCountry?.videoLinks.step5 ? (
-                <iframe
-                  src={selectedCountry.videoLinks.step5}
-                  className="w-full h-full rounded-lg"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <a
+                  href={selectedCountry.videoLinks.step5}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
+                >
+                  <div className="w-full h-full bg-[#1a1a1a]" />
+                </a>
               ) : (
-                <div className="text-center space-y-4">
-                  <div className="text-white/40 text-sm font-mono">
-                    Video preview space
-                  </div>
-                  <div className="text-white/60 text-xs font-mono">
-                    (Video link will be added here)
-                  </div>
-                </div>
+                <div className="w-full h-full bg-[#1a1a1a]" />
               )}
             </div>
           </div>

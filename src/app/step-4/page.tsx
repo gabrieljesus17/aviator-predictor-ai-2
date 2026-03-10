@@ -98,20 +98,17 @@ export default function Step4() {
 
           {/* Card Central */}
           <div className="w-full bg-[#121212] rounded-2xl overflow-hidden mb-6">
-            {/* Vídeo ou espaço reservado */}
             {selectedCountry?.videoLinks.step4 ? (
-              <div className="w-full h-64">
-                <iframe
-                  src={selectedCountry.videoLinks.step4}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              <a
+                href={selectedCountry.videoLinks.step4}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-64"
+              >
+                <div className="w-full h-full bg-[#1a1a1a]" />
+              </a>
             ) : (
-              <div className="w-full h-64 bg-[#1a1a1a] flex items-center justify-center">
-                <span className="text-[#4a4a4a] text-sm">Espaço reservado para vídeo</span>
-              </div>
+              <div className="w-full h-64 bg-[#1a1a1a]" />
             )}
           </div>
 
