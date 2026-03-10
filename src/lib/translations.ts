@@ -1,6 +1,6 @@
 // Sistema de traduções multi-idioma
 
-export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id';
+export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id' | 'es';
 
 // Mapeamento de país para idioma
 export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
@@ -16,6 +16,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   TR: 'tr', // Turkey
   AO: 'pt', // Angola
   ID: 'id', // Indonesia
+  CO: 'es', // Colombia
   OTHER: 'en', // Other
 };
 
@@ -225,5 +226,39 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_another_signal: 'Dapatkan Sinyal Lain',
     recalibrating_ai: '⚙️ Mengkalibrasi ulang model AI...',
     processing: 'Memproses...',
+  },
+  es: {
+    // Step-1
+    get_ai_signals: 'OBTENER SEÑALES AI',
+    // Step-2
+    unlock_ai_access: 'DESBLOQUEAR ACCESO AI',
+    enter_access_code: 'Ingresa tu código de acceso para continuar',
+    access_code: 'Código de acceso',
+    validate: 'VALIDAR',
+    high_demand_message: 'Debido a la alta demanda, los códigos de acceso están limitados a 50 nuevos usuarios por hora.',
+    access_code_info: 'Si aún no tienes tu código de acceso, solicítalo para desbloquear el acceso completo.',
+    get_my_access_code: 'OBTENER MI CÓDIGO DE ACCESO',
+    decrypting: 'Descifrando...',
+    access_granted: 'ACCESO CONCEDIDO',
+    // Step-3
+    logout: 'Cerrar',
+    my_students: 'MIS ESTUDIANTES',
+    live: 'EN VIVO',
+    ai_signals: 'SEÑALES AI',
+    activate: 'ACTIVAR',
+    support: 'Soporte',
+    // Step-4
+    back: 'Volver',
+    find_aviator_game: 'Primero, encuentra el juego "Aviator"',
+    how_to_find_aviator: 'CÓMO ENCONTRAR AVIATOR EN EL SITIO WEB',
+    i_found_game: 'ENCONTRÉ EL JUEGO',
+    // Step-5
+    how_to_use_predictor: 'CÓMO USAR EL PREDICTOR',
+    get_bet_size: 'Calcular Apuesta Ideal',
+    get_signal: 'Obtener Señal',
+    analyzing_data: 'Analizando datos…',
+    get_another_signal: 'Obtener otra Señal',
+    recalibrating_ai: '⚙️ Recalibrando modelo de IA...',
+    processing: 'Procesando...',
   },
 };
