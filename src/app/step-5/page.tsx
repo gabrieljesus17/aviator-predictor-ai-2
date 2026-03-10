@@ -611,7 +611,11 @@ export default function Step5() {
                   rel="noopener noreferrer"
                   className="block w-full h-full"
                 >
-                  <div className="w-full h-full bg-[#1a1a1a]" />
+                  <img
+                    src="https://pub-c0bfb119504542e0b2e6ebc8f6b3b1df.r2.dev/user-uploads/user_32bsobektMxVyp4lNjf7TryrISo/6e6751ee-2019-4c01-a249-ea626e7e2bf9.png"
+                    alt="How to use Predictor"
+                    className="w-full h-full object-cover"
+                  />
                 </a>
               ) : (
                 <div className="w-full h-full bg-[#1a1a1a]" />
