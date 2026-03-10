@@ -318,5 +318,5 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 
 // Lista ordenada de países para exibição (Other por último)
 export const COUNTRY_LIST = [
-  'KE', 'GH', 'ZM', 'NG', 'ZA', 'TZ', 'PH', 'IN', 'BD', 'TR', 'AO', 'ID', 'OTHER'
+  'KE', 'GH', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'OTHER'
 ];
