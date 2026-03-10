@@ -93,7 +93,7 @@ export default function Step4() {
 
           {/* Subtítulo */}
           <p className="text-[#b0b0b0] text-sm text-center mb-6">
-            {t('how_to_find_aviator')} <span className="text-white" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.6)' }}>BETWINNER</span>
+            {t('how_to_find_aviator')}
           </p>
 
           {/* Card Central */}
