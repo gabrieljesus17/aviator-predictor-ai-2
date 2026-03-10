@@ -292,6 +292,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-en/',
     },
   },
+  CO: {
+    code: 'CO',
+    name: 'Colombia',
+    flag: '🇨🇴',
+    currencyCode: 'COP',
+    currencySymbol: 'COP',
+    valueDistribution: {
+      range1: { percent: 38, min: 36000, max: 360000 },
+      range2: { percent: 38, min: 360001, max: 865000 },
+      range3: { percent: 16, min: 865001, max: 1800000 },
+      range4: { percent: 8, min: 1800001, max: 3600000 },
+    },
+    betAmountRange: {
+      min: 1500,
+      max: 22000,
+    },
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-a360/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
   OTHER: {
     code: 'OTHER',
     name: 'Other',
@@ -318,5 +340,5 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 
 // Lista ordenada de países para exibição (Other por último)
 export const COUNTRY_LIST = [
-  'KE', 'GH', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'OTHER'
+  'KE', 'GH', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'CO', 'OTHER'
 ];
