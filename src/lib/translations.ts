@@ -17,6 +17,8 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   AO: 'pt', // Angola
   ID: 'id', // Indonesia
   CO: 'es', // Colombia
+  VE: 'es', // Venezuela
+  DO: 'es', // República Dominicana
   OTHER: 'en', // Other
 };
 

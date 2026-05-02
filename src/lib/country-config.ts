@@ -314,6 +314,50 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
+  VE: {
+    code: 'VE',
+    name: 'Venezuela',
+    flag: '🇻🇪',
+    currencyCode: 'USD',
+    currencySymbol: 'USD',
+    valueDistribution: {
+      range1: { percent: 38, min: 9.6, max: 96 },
+      range2: { percent: 38, min: 96.1, max: 230 },
+      range3: { percent: 16, min: 230.1, max: 480 },
+      range4: { percent: 8, min: 480.01, max: 960 },
+    },
+    betAmountRange: {
+      min: 1,
+      max: 10,
+    },
+    accessCodeLink: null,
+    videoLinks: {
+      step4: null,
+      step5: null,
+    },
+  },
+  DO: {
+    code: 'DO',
+    name: 'República Dominicana',
+    flag: '🇩🇴',
+    currencyCode: 'DOP',
+    currencySymbol: 'DOP',
+    valueDistribution: {
+      range1: { percent: 38, min: 560, max: 5600 },
+      range2: { percent: 38, min: 5601, max: 13400 },
+      range3: { percent: 16, min: 13401, max: 28000 },
+      range4: { percent: 8, min: 28001, max: 56000 },
+    },
+    betAmountRange: {
+      min: 20,
+      max: 300,
+    },
+    accessCodeLink: null,
+    videoLinks: {
+      step4: null,
+      step5: null,
+    },
+  },
   OTHER: {
     code: 'OTHER',
     name: 'Other',
@@ -340,5 +384,5 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 
 // Lista ordenada de países para exibição (Other por último)
 export const COUNTRY_LIST = [
-  'KE', 'GH', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'CO', 'OTHER'
+  'KE', 'GH', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'CO', 'VE', 'DO', 'OTHER'
 ];
