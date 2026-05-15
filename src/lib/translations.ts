@@ -239,7 +239,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     validate: 'VALIDAR',
     high_demand_message: 'Debido a la alta demanda, los códigos de acceso están limitados a 50 nuevos usuarios por hora.',
     access_code_info: 'Si aún no tienes tu código de acceso, solicítalo para desbloquear el acceso completo.',
-    get_my_access_code: 'OBTENER MI CÓDIGO DE ACCESO',
+    get_my_access_code: 'OBTENER MI CÓDIGO',
     decrypting: 'Descifrando...',
     access_granted: 'ACCESO CONCEDIDO',
     // Step-3
