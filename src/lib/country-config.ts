@@ -310,7 +310,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     },
     accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
-      step4: 'https://aviatorpredictor.world/how-to-find-a360/',
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
