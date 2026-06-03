@@ -314,6 +314,72 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
+  MX: {
+    code: 'MX',
+    name: 'México',
+    flag: '🇲🇽',
+    currencyCode: 'MXN',
+    currencySymbol: 'MXN',
+    valueDistribution: {
+      range1: { percent: 38, min: 1600, max: 16000 },
+      range2: { percent: 38, min: 16001, max: 38000 },
+      range3: { percent: 16, min: 38001, max: 80000 },
+      range4: { percent: 8, min: 80001, max: 160000 },
+    },
+    betAmountRange: {
+      min: 70,
+      max: 1000,
+    },
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
+  EC: {
+    code: 'EC',
+    name: 'Ecuador',
+    flag: '🇪🇨',
+    currencyCode: 'USD',
+    currencySymbol: 'USD',
+    valueDistribution: {
+      range1: { percent: 38, min: 9, max: 90 },
+      range2: { percent: 38, min: 91, max: 215 },
+      range3: { percent: 16, min: 216, max: 450 },
+      range4: { percent: 8, min: 451, max: 900 },
+    },
+    betAmountRange: {
+      min: 1,
+      max: 10,
+    },
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
+  CL: {
+    code: 'CL',
+    name: 'Chile',
+    flag: '🇨🇱',
+    currencyCode: 'CLP',
+    currencySymbol: 'CLP',
+    valueDistribution: {
+      range1: { percent: 38, min: 8800, max: 88000 },
+      range2: { percent: 38, min: 88001, max: 210000 },
+      range3: { percent: 16, min: 210001, max: 440000 },
+      range4: { percent: 8, min: 440001, max: 880000 },
+    },
+    betAmountRange: {
+      min: 400,
+      max: 5000,
+    },
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
   VE: {
     code: 'VE',
     name: 'Venezuela',
@@ -384,5 +450,5 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 
 // Lista ordenada de países para exibição (Other por último)
 export const COUNTRY_LIST = [
-  'KE', 'GH', 'CO', 'VE', 'DO', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'AO', 'ID', 'OTHER'
+  'CO', 'MX', 'EC', 'DO', 'CL', 'VE', 'GH', 'KE', 'AO', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'ID', 'OTHER'
 ];
