@@ -321,14 +321,14 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     currencyCode: 'MXN',
     currencySymbol: 'MXN',
     valueDistribution: {
-      range1: { percent: 38, min: 1600, max: 16000 },
-      range2: { percent: 38, min: 16001, max: 38000 },
-      range3: { percent: 16, min: 38001, max: 80000 },
-      range4: { percent: 8, min: 80001, max: 160000 },
+      range1: { percent: 38, min: 163.2, max: 1632 },
+      range2: { percent: 38, min: 1633.7, max: 3910 },
+      range3: { percent: 16, min: 3911.7, max: 8160 },
+      range4: { percent: 8, min: 8160.17, max: 16320 },
     },
     betAmountRange: {
-      min: 70,
-      max: 1000,
+      min: 6,
+      max: 70,
     },
     accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
@@ -343,14 +343,14 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     currencyCode: 'USD',
     currencySymbol: 'USD',
     valueDistribution: {
-      range1: { percent: 38, min: 9, max: 90 },
-      range2: { percent: 38, min: 91, max: 215 },
-      range3: { percent: 16, min: 216, max: 450 },
-      range4: { percent: 8, min: 451, max: 900 },
+      range1: { percent: 38, min: 9.6, max: 96 },
+      range2: { percent: 38, min: 96.1, max: 230 },
+      range3: { percent: 16, min: 230.1, max: 480 },
+      range4: { percent: 8, min: 480.01, max: 960 },
     },
     betAmountRange: {
       min: 1,
-      max: 10,
+      max: 5,
     },
     accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
@@ -365,14 +365,14 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     currencyCode: 'CLP',
     currencySymbol: 'CLP',
     valueDistribution: {
-      range1: { percent: 38, min: 8800, max: 88000 },
-      range2: { percent: 38, min: 88001, max: 210000 },
-      range3: { percent: 16, min: 210001, max: 440000 },
-      range4: { percent: 8, min: 440001, max: 880000 },
+      range1: { percent: 38, min: 8592, max: 85920 },
+      range2: { percent: 38, min: 86009.5, max: 205850 },
+      range3: { percent: 16, min: 205939.5, max: 429600 },
+      range4: { percent: 8, min: 429608.95, max: 859200 },
     },
     betAmountRange: {
-      min: 400,
-      max: 5000,
+      min: 350,
+      max: 3500,
     },
     accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
