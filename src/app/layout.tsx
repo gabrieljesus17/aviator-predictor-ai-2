@@ -32,9 +32,7 @@ export default function RootLayout({
       <head>
         <Script src="/lasy-bridge.js" strategy="beforeInteractive" />
         {/* Meta Pixel - LATAM 5 */}
-        <Script
-          id="meta-pixel-latam5"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -51,9 +49,7 @@ export default function RootLayout({
           }}
         />
         {/* Meta Pixel - México */}
-        <Script
-          id="meta-pixel-mexico"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
