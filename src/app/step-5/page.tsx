@@ -224,16 +224,13 @@ export default function Step5() {
   // Gerar multiplicador aleatório com distribuição controlada
   const generateMultiplier = (): number => {
     const random = Math.random() * 100;
-    
-    if (random < 63) {
-      // 63% -> até 2.60x
-      return parseFloat((1.10 + Math.random() * 1.50).toFixed(2));
-    } else if (random < 87) {
-      // 24% -> entre 2.61x e 4.60x
-      return parseFloat((2.61 + Math.random() * 1.99).toFixed(2));
+
+    if (random < 90) {
+      // 90% -> até 1.50x
+      return parseFloat((1.00 + Math.random() * 0.50).toFixed(2));
     } else {
-      // 13% -> até 13.50x
-      return parseFloat((4.61 + Math.random() * 8.89).toFixed(2));
+      // 10% -> entre 1.51x e 2.00x
+      return parseFloat((1.51 + Math.random() * 0.49).toFixed(2));
     }
   };
 
