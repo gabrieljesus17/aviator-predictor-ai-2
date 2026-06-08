@@ -387,14 +387,14 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     currencyCode: 'PEN',
     currencySymbol: 'PEN',
     valueDistribution: {
-      range1: { percent: 38, min: 36, max: 360 },
-      range2: { percent: 38, min: 361, max: 865 },
-      range3: { percent: 16, min: 866, max: 1800 },
-      range4: { percent: 8, min: 1801, max: 3600 },
+      range1: { percent: 38, min: 33.6, max: 336 },
+      range2: { percent: 38, min: 336.35, max: 805 },
+      range3: { percent: 16, min: 805.35, max: 1680 },
+      range4: { percent: 8, min: 1680.035, max: 3360 },
     },
     betAmountRange: {
-      min: 2,
-      max: 20,
+      min: 3,
+      max: 30,
     },
     accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
