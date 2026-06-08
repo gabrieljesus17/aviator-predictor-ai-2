@@ -32,9 +32,12 @@ export default function CountrySelector({ isOpen, onClose }: CountrySelectorProp
         onClick={(e) => e.stopPropagation()}
       >
         {/* Título */}
-        <h2 className="text-white text-2xl font-semibold text-center mb-2">
+        <h2 className="text-white text-2xl font-semibold text-center mb-1">
           Set your operating region
         </h2>
+        <p className="text-gray-400 text-sm text-center">
+          Selecciona tu región de operación
+        </p>
 
         {/* Lista de países */}
         <div className="mt-6 space-y-2 max-h-[60vh] overflow-y-auto">
