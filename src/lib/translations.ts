@@ -20,6 +20,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   MX: 'es', // México
   EC: 'es', // Ecuador
   CL: 'es', // Chile
+  PE: 'es', // Perú
   VE: 'es', // Venezuela
   DO: 'es', // República Dominicana
   OTHER: 'en', // Other

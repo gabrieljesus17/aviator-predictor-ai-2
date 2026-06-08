@@ -380,6 +380,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
+  PE: {
+    code: 'PE',
+    name: 'Perú',
+    flag: '🇵🇪',
+    currencyCode: 'PEN',
+    currencySymbol: 'PEN',
+    valueDistribution: {
+      range1: { percent: 38, min: 36, max: 360 },
+      range2: { percent: 38, min: 361, max: 865 },
+      range3: { percent: 16, min: 866, max: 1800 },
+      range4: { percent: 8, min: 1801, max: 3600 },
+    },
+    betAmountRange: {
+      min: 2,
+      max: 20,
+    },
+    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
   VE: {
     code: 'VE',
     name: 'Venezuela',
@@ -450,5 +472,5 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 
 // Lista ordenada de países para exibição (Other por último)
 export const COUNTRY_LIST = [
-  'CO', 'MX', 'EC', 'DO', 'CL', 'VE', 'GH', 'KE', 'AO', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'ID', 'OTHER'
+  'CO', 'MX', 'EC', 'DO', 'CL', 'PE', 'VE', 'GH', 'KE', 'AO', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'ID', 'OTHER'
 ];
