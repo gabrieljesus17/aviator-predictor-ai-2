@@ -1,71 +1,42 @@
 # Implementation Plan
 
-# Correção da Inserção dos Meta Pixels
+# Remover Pixels do Facebook (Meta Pixel)
 
 ## Contexto
-Os dois Meta Pixels (LATAM 5 e México) foram inseridos usando o componente `Script` do Next.js com `strategy="afterInteractive"`. Esse método injeta o script dinamicamente via JavaScript após a hidratação do React, o que significa que o pixel **não aparece no HTML estático** retornado pelo servidor. O verificador da Meta escaneia o HTML estático e por isso não detecta os pixels.
-
-## Análise
-
-- Arquivo: `/workspace/src/app/layout.tsx`
-- Problema: `<Script strategy="afterInteractive">` injeta o script via JS runtime, não no HTML inicial
-- Solução: Usar `<script dangerouslySetInnerHTML>` diretamente no `<head>` do JSX, sem o componente `Script`. Isso garante que o pixel esteja no HTML renderizado pelo servidor (SSR), visível para scrapers e verificadores como o da Meta.
-
-## Passos
-
-1. Remover os dois blocos `<Script>` com `strategy="afterInteractive"` do `<head>`
-2. Substituir por tags `<script>` nativas com `dangerouslySetInnerHTML` diretamente no `<head>`
-3. Manter os blocos `<noscript>` no `<body>` como estão (já estão corretos)
-4. Rodar `npx tsc --noEmit` para verificar erros TypeScript
+O projeto possui dois Meta Pixels inseridos no `layout.tsx`: LATAM 5 (968953209274863) e México (867051872492763). O usuário quer removê-los completamente, sem alterar nenhuma outra parte da estrutura do arquivo.
 
 ## Arquivo a Modificar
+`/workspace/src/app/layout.tsx`
 
-- `/workspace/src/app/layout.tsx`
+## O que será removido
 
-## Código Novo (substituição no `<head>`)
+**No `<head>` (linhas 34–67):** dois blocos `<script dangerouslySetInnerHTML>` com os scripts de inicialização do fbq para cada pixel.
 
+**No `<body>` (linhas 72–83):** dois blocos `<noscript><img>` de fallback para ambientes sem JavaScript.
+
+## O que NÃO será alterado
+- Import do `Script` (linha 4) — permanece pois já é usado pelo `/lasy-bridge.js`
+- Toda a estrutura do layout, providers, fontes e metadata
+- Nenhum outro arquivo será tocado
+
+## Resultado final do `<head>` após a remoção
 ```tsx
 <head>
   <Script src="/lasy-bridge.js" strategy="beforeInteractive" />
-  {/* Meta Pixel - LATAM 5 */}
-  <script
-    dangerouslySetInnerHTML={{
-      __html: `
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '968953209274863');
-        fbq('track', 'PageView');
-      `,
-    }}
-  />
-  {/* Meta Pixel - México */}
-  <script
-    dangerouslySetInnerHTML={{
-      __html: `
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '867051872492763');
-        fbq('track', 'PageView');
-      `,
-    }}
-  />
 </head>
 ```
 
-## Critérios de Sucesso
+## Resultado final do `<body>` após a remoção
+```tsx
+<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+  <CountryProvider>
+    {children}
+  </CountryProvider>
+</body>
+```
 
-- Build TypeScript sem erros
-- Ao acessar o código-fonte da URL pública, os IDs dos pixels aparecem no HTML
-- A Meta detecta os pixels ao verificar o domínio no Gerenciador de Eventos
+## Verificação
+Após a edição, confirmar que:
+1. Os IDs `968953209274863` e `867051872492763` não aparecem mais em nenhum arquivo do projeto
+2. O app compila sem erros (`npx tsc --noEmit`)
+3. O layout continua funcional no preview
