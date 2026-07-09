@@ -44,7 +44,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 10,
       max: 100,
     },
-    accessCodeLink: 'https://chat.whatsapp.com/Ck2k9k41NCO2JAdiXPabmA',
+    accessCodeLink: 'http://aviatorpredictor.world/zambia',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -154,7 +154,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 900,
       max: 14000,
     },
-    accessCodeLink: 'https://chat.whatsapp.com/EyI0y9J3KnKBitTXihYMeS',
+    accessCodeLink: 'http://aviatorpredictor.world/tanzania',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -446,6 +446,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
+  UG: {
+    code: 'UG',
+    name: 'Uganda',
+    flag: '🇺🇬',
+    currencyCode: 'UGX',
+    currencySymbol: 'UGX',
+    valueDistribution: {
+      range1: { percent: 38, min: 37000, max: 370000 },
+      range2: { percent: 38, min: 370001, max: 890000 },
+      range3: { percent: 16, min: 890001, max: 1860000 },
+      range4: { percent: 8, min: 1860001, max: 3700000 },
+    },
+    betAmountRange: {
+      min: 1400,
+      max: 20000,
+    },
+    accessCodeLink: 'http://aviatorpredictor.world/uganda',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-bw/',
+      step5: 'https://aviatorpredictor.world/tutorial-en/',
+    },
+  },
   OTHER: {
     code: 'OTHER',
     name: 'Other',
@@ -474,3 +496,6 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
 export const COUNTRY_LIST = [
   'CO', 'MX', 'EC', 'DO', 'CL', 'PE', 'VE', 'GH', 'KE', 'AO', 'NG', 'BD', 'ZA', 'TZ', 'ZM', 'PH', 'IN', 'TR', 'ID', 'OTHER'
 ];
+
+// Lista de países para a versão /africa
+export const COUNTRY_LIST_AFRICA = ['TZ', 'UG', 'ZM'];

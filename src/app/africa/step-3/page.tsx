@@ -1,0 +1,116 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
+import { LogOut } from "lucide-react";
+import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
+import { soundManager } from "@/lib/sounds";
+import { useTranslation } from "@/hooks/useTranslation";
+
+export default function AfricaStep3() {
+  const router = useRouter();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!isSessionActive()) {
+      router.push("/africa");
+      return;
+    }
+  }, [router]);
+
+  const handleLogout = () => {
+    updateActivity();
+    clearSession();
+    router.push("/africa");
+  };
+
+  const handleActivate = () => {
+    updateActivity();
+    soundManager.playClick();
+    router.push("/africa/step-4");
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0b0b0b] text-white overflow-y-auto">
+      <div className="w-full max-w-md mx-auto px-4 py-6">
+
+        <div className="flex justify-between items-center mb-8">
+          <a
+            href="https://wa.link/nbyrnx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
+          >
+            {t('support')}
+          </a>
+
+          <button
+            onClick={handleLogout}
+            className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
+          >
+            <LogOut className="w-4 h-4" />
+            {t('logout')}
+          </button>
+        </div>
+
+        <LiveStudentsMenu />
+
+        <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
+
+        <div>
+          <div className="flex items-center justify-center mb-6 gap-4">
+            <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
+            <h2 className="text-[1.7rem] font-normal text-[#2dff57] text-center whitespace-nowrap">
+              {t('ai_signals')}
+            </h2>
+            <div className="flex-1 h-[1px] bg-[#2dff57]/30"></div>
+          </div>
+
+          <div
+            className="bg-[#121212] rounded-2xl overflow-hidden relative"
+            style={{
+              border: '0.5px solid transparent',
+              backgroundImage: 'linear-gradient(#121212, #121212), linear-gradient(to bottom, #2dff57, #5ec87c, #e8e8e8)',
+              backgroundOrigin: 'border-box',
+              backgroundClip: 'padding-box, border-box'
+            }}
+          >
+            <div className="w-full h-48 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
+              <img
+                src="https://pub-c0bfb119504542e0b2e6ebc8f6b3b1df.r2.dev/user-uploads/user_32bsobektMxVyp4lNjf7TryrISo/202be2e9-a812-43fe-94f7-894ccffcb00f.png"
+                alt="Aviator AI Predictor"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="p-6 flex flex-col items-center gap-3">
+              <h3
+                className="text-[#2dff57] text-[1.4rem] font-medium text-center"
+                style={{ backdropFilter: 'blur(2px)' }}
+              >
+                Aviator AI PREDICTOR
+              </h3>
+
+              <p className="text-gray-400 text-sm text-center">
+                Signals/sec: <span className="text-[#2dff57]">552</span>
+              </p>
+
+              <p className="text-gray-400 text-sm text-center mb-2">
+                Success rate: <span className="text-[#aff717]">96.2%</span>
+              </p>
+
+              <button
+                onClick={handleActivate}
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-6 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-colors"
+              >
+                {t('activate')}
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

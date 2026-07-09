@@ -1,0 +1,119 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { LogOut } from "lucide-react";
+import { isSessionActive, updateActivity, clearSession } from "@/lib/session";
+import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
+import { soundManager } from "@/lib/sounds";
+import { useCountry } from "@/contexts/CountryContext";
+import { useTranslation } from "@/hooks/useTranslation";
+
+export default function AfricaStep4() {
+  const router = useRouter();
+  const { selectedCountry } = useCountry();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!isSessionActive()) {
+      router.push("/africa");
+      return;
+    }
+  }, [router]);
+
+  const handleLogout = () => {
+    updateActivity();
+    clearSession();
+    router.push("/africa");
+  };
+
+  const handleVoltar = () => {
+    updateActivity();
+    router.push("/africa/step-3");
+  };
+
+  const handleEncontreiJogo = () => {
+    updateActivity();
+    soundManager.playClick();
+    router.push("/africa/step-5");
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0b0b0b] text-white overflow-y-auto">
+      <div className="w-full max-w-md mx-auto px-4 py-6">
+
+        <div className="flex justify-between items-center mb-8">
+          <a
+            href="https://wa.link/nbyrnx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1d8b33] text-white text-sm px-3 py-2 rounded-md hover:bg-[#176e28] transition-colors"
+          >
+            {t('support')}
+          </a>
+
+          <button
+            onClick={handleLogout}
+            className="bg-[#eb0f0f] text-white text-sm px-4 py-2 rounded-md hover:bg-[#d00d0d] transition-colors flex items-center gap-2"
+          >
+            <LogOut className="w-4 h-4" />
+            {t('logout')}
+          </button>
+        </div>
+
+        <LiveStudentsMenu />
+
+        <div className="h-[0.5px] bg-[#1d8b33] my-8"></div>
+
+        <div className="mb-8">
+          <button
+            onClick={handleVoltar}
+            className="bg-black border border-[#ffd400] text-[#ffd400] px-6 py-[6.16px] rounded-lg hover:bg-[#ffd400] hover:text-black transition-colors flex items-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            {t('back')}
+          </button>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <h1 className="text-white text-[23.52px] font-medium text-center mb-4 mt-6">
+            {t('find_aviator_game')}
+          </h1>
+
+          <p className="text-[#b0b0b0] text-sm text-center mb-6">
+            {t('how_to_find_aviator')}
+          </p>
+
+          <div className="w-full bg-[#121212] rounded-2xl overflow-hidden mb-6">
+            {selectedCountry?.videoLinks.step4 ? (
+              <a
+                href={selectedCountry.videoLinks.step4}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-64"
+              >
+                <img
+                  src="https://pub-c0bfb119504542e0b2e6ebc8f6b3b1df.r2.dev/user-uploads/user_32bsobektMxVyp4lNjf7TryrISo/d7535210-ed96-446f-92c6-7bbb566f0834.png"
+                  alt="How to find Aviator"
+                  className="w-full h-full object-cover"
+                />
+              </a>
+            ) : (
+              <div className="w-full h-64 bg-[#1a1a1a]" />
+            )}
+          </div>
+
+          <button
+            onClick={handleEncontreiJogo}
+            className="w-full bg-[#2dff57] text-black font-medium py-3 px-6 rounded-lg hover:bg-[#26e04d] transition-colors"
+          >
+            {t('i_found_game')}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  );
+}

@@ -6,10 +6,12 @@ import { COUNTRY_CONFIGS, COUNTRY_LIST } from '@/lib/country-config';
 interface CountrySelectorProps {
   isOpen: boolean;
   onClose: () => void;
+  countryList?: string[];
 }
 
-export default function CountrySelector({ isOpen, onClose }: CountrySelectorProps) {
+export default function CountrySelector({ isOpen, onClose, countryList }: CountrySelectorProps) {
   const { setCountry } = useCountry();
+  const list = countryList ?? COUNTRY_LIST;
 
   if (!isOpen) return null;
 
@@ -41,7 +43,7 @@ export default function CountrySelector({ isOpen, onClose }: CountrySelectorProp
 
         {/* Lista de países */}
         <div className="mt-6 space-y-2 max-h-[60vh] overflow-y-auto">
-          {COUNTRY_LIST.map((countryCode, index) => {
+          {list.map((countryCode, index) => {
             const country = COUNTRY_CONFIGS[countryCode];
             const isOther = countryCode === 'OTHER';
 
