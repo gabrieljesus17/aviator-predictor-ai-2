@@ -7,6 +7,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   KE: 'en', // Kenya
   GH: 'en', // Ghana
   ZM: 'en', // Zambia
+  LR: 'en', // Liberia
   NG: 'en', // Nigeria
   ZA: 'en', // South Africa
   TZ: 'en', // Tanzania

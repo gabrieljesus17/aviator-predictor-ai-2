@@ -468,6 +468,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-en/',
     },
   },
+  LR: {
+    code: 'LR',
+    name: 'Liberia',
+    flag: '🇱🇷',
+    currencyCode: 'LRD',
+    currencySymbol: 'LRD',
+    valueDistribution: {
+      range1: { percent: 38, min: 180, max: 1800 },
+      range2: { percent: 38, min: 1801, max: 4300 },
+      range3: { percent: 16, min: 4301, max: 9000 },
+      range4: { percent: 8, min: 9001, max: 18000 },
+    },
+    betAmountRange: {
+      min: 10,
+      max: 100,
+    },
+    accessCodeLink: 'http://aviatorpredictor.world/liberia',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-bw/',
+      step5: 'https://aviatorpredictor.world/tutorial-en/',
+    },
+  },
   OTHER: {
     code: 'OTHER',
     name: 'Other',
@@ -498,4 +520,4 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-export const COUNTRY_LIST_AFRICA = ['TZ', 'UG', 'ZM'];
+export const COUNTRY_LIST_AFRICA = ['TZ', 'UG', 'ZM', 'LR'];
