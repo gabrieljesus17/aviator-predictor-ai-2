@@ -9,10 +9,23 @@ import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
 import { useCountry } from "@/contexts/CountryContext";
 import { useTranslation } from "@/hooks/useTranslation";
 
+// Links de "GET MY ACCESS CODE" específicos da versão /africa
+const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
+  ZM: 'https://aviatorpredictor.world/chat-zm',
+  TZ: 'https://aviatorpredictor.world/chat-tz',
+  UG: 'https://aviatorpredictor.world/chat-ug',
+  LR: 'https://aviatorpredictor.world/chat-lr',
+};
+
 export default function AfricaStep2() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
   const { t } = useTranslation();
+
+  const accessCodeLink =
+    selectedCountry?.code && AFRICA_ACCESS_CODE_LINKS[selectedCountry.code]
+      ? AFRICA_ACCESS_CODE_LINKS[selectedCountry.code]
+      : selectedCountry?.accessCodeLink;
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
   const [showPopup, setShowPopup] = useState(false);
@@ -129,9 +142,9 @@ export default function AfricaStep2() {
           {t('access_code_info')}
         </p>
 
-        {selectedCountry?.accessCodeLink ? (
+        {accessCodeLink ? (
           <a
-            href={selectedCountry.accessCodeLink}
+            href={accessCodeLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"
