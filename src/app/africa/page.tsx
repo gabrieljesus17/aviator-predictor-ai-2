@@ -7,6 +7,7 @@ import { useCountry } from "@/contexts/CountryContext";
 import CountrySelector from "@/components/custom/CountrySelector";
 import { useTranslation } from "@/hooks/useTranslation";
 import { COUNTRY_LIST_AFRICA } from "@/lib/country-config";
+import { captureLeadParams, getLeadParamsForRoute } from "@/lib/leadParams";
 
 export default function AfricaHome() {
   const router = useRouter();
@@ -15,6 +16,8 @@ export default function AfricaHome() {
   const [showCountrySelector, setShowCountrySelector] = useState(false);
 
   useEffect(() => {
+    // Captura params de origem (?origem=...) da URL de chegada do lead
+    captureLeadParams();
     if (isSessionActive()) {
       router.push("/africa/step-3");
     }
@@ -27,7 +30,8 @@ export default function AfricaHome() {
 
   const handleCountrySelected = () => {
     setShowCountrySelector(false);
-    router.push("/africa/step-2");
+    // Navegar para step-2 levando os params de origem
+    router.push("/africa/step-2" + getLeadParamsForRoute());
   };
 
   return (

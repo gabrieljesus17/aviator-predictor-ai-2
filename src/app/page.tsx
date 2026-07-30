@@ -6,6 +6,7 @@ import { isSessionActive, updateActivity } from "@/lib/session";
 import { useCountry } from "@/contexts/CountryContext";
 import CountrySelector from "@/components/custom/CountrySelector";
 import { useTranslation } from "@/hooks/useTranslation";
+import { captureLeadParams, getLeadParamsForRoute } from "@/lib/leadParams";
 
 export default function Home() {
   const router = useRouter();
@@ -15,6 +16,8 @@ export default function Home() {
 
   // Verificar se já tem sessão ativa e redirecionar para step-3
   useEffect(() => {
+    // Captura params de origem (?origem=...) da URL de chegada do lead
+    captureLeadParams();
     if (isSessionActive()) {
       router.push("/step-3");
     }
@@ -29,8 +32,8 @@ export default function Home() {
 
   const handleCountrySelected = () => {
     setShowCountrySelector(false);
-    // Após selecionar país, navegar para step-2
-    router.push("/step-2");
+    // Após selecionar país, navegar para step-2 levando os params de origem
+    router.push("/step-2" + getLeadParamsForRoute());
   };
 
   return (

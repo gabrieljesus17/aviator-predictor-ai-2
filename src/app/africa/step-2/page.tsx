@@ -8,6 +8,7 @@ import { soundManager } from "@/lib/sounds";
 import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
 import { useCountry } from "@/contexts/CountryContext";
 import { useTranslation } from "@/hooks/useTranslation";
+import { captureLeadParams, appendLeadParamsToUrl } from "@/lib/leadParams";
 
 // Links de "GET MY ACCESS CODE" específicos da versão /africa
 const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
@@ -31,11 +32,24 @@ export default function AfricaStep2() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
 
+  // Link final do botão = link base do país (override África ou country-config)
+  // + params de origem (?origem=...) anexados.
+  const [finalAccessCodeLink, setFinalAccessCodeLink] = useState<string | null | undefined>(
+    () => (typeof window !== "undefined" ? appendLeadParamsToUrl(accessCodeLink) : null)
+  );
+
   useEffect(() => {
+    // Captura params de origem da URL (chegada direta ou vindos da landing da África)
+    captureLeadParams();
     if (isSessionActive()) {
       router.push("/africa/step-3");
     }
   }, [router]);
+
+  // Recalcula o link final quando o link base do país muda ou novos params chegam
+  useEffect(() => {
+    setFinalAccessCodeLink(appendLeadParamsToUrl(accessCodeLink));
+  }, [accessCodeLink]);
 
   const handleUnlock = () => {
     updateActivity();
@@ -144,7 +158,7 @@ export default function AfricaStep2() {
 
         {accessCodeLink ? (
           <a
-            href={accessCodeLink}
+            href={finalAccessCodeLink ?? accessCodeLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"

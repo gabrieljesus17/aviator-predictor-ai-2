@@ -8,6 +8,7 @@ import { soundManager } from "@/lib/sounds";
 import MiniLiveActivity from "@/components/custom/MiniLiveActivity";
 import { useCountry } from "@/contexts/CountryContext";
 import { useTranslation } from "@/hooks/useTranslation";
+import { captureLeadParams, appendLeadParamsToUrl } from "@/lib/leadParams";
 
 export default function Step2() {
   const router = useRouter();
@@ -18,12 +19,25 @@ export default function Step2() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
 
+  // Link final do botão = link base do país + params de origem (?origem=...) anexados.
+  const baseLink = selectedCountry?.accessCodeLink ?? null;
+  const [finalAccessCodeLink, setFinalAccessCodeLink] = useState<string | null | undefined>(
+    () => (typeof window !== "undefined" ? appendLeadParamsToUrl(baseLink) : null)
+  );
+
   // Verificar se já tem acesso e redirecionar
   useEffect(() => {
+    // Captura params de origem da URL (chegada direta em /step-2?origem=... ou vindos da step-1)
+    captureLeadParams();
     if (isSessionActive()) {
       router.push("/step-3");
     }
   }, [router]);
+
+  // Recalcula o link final quando o país (e seu link base) muda ou quando novos params chegam
+  useEffect(() => {
+    setFinalAccessCodeLink(appendLeadParamsToUrl(baseLink));
+  }, [baseLink]);
 
   const handleUnlock = () => {
     updateActivity();
@@ -151,7 +165,7 @@ export default function Step2() {
         {/* Botão GET MY ACCESS CODE - largura reduzida 30% */}
         {selectedCountry?.accessCodeLink ? (
           <a
-            href={selectedCountry.accessCodeLink}
+            href={finalAccessCodeLink ?? selectedCountry.accessCodeLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-[70%] py-3 bg-black text-[#ff8c00] border border-[#ff8c00] text-base font-semibold rounded-lg hover:bg-[#0a0a0a] transition-all flex items-center justify-center animate-pulse"

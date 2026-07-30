@@ -66,7 +66,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 50,
       max: 700,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -88,7 +88,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 4,
       max: 60,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -110,7 +110,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 500,
       max: 8000,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698d27317215c228630bb5f1',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698d27317215c228630bb5f1',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-1w/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -132,7 +132,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 6,
       max: 90,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -176,7 +176,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 22,
       max: 350,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af5e327765bf096007a5c7',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af5e327765bf096007a5c7',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -198,7 +198,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 30,
       max: 500,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -220,7 +220,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 40,
       max: 700,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698d1c435c4cc65bff0c3ff7',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698d1c435c4cc65bff0c3ff7',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-bn/',
@@ -242,7 +242,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 16,
       max: 250,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698d1c94a81a25fd2c0d781a',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698d1c94a81a25fd2c0d781a',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -264,7 +264,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 350,
       max: 5000,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698d1caf81994b74d20aadb2',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698d1caf81994b74d20aadb2',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bantu/',
       step5: 'https://aviatorpredictor.world/tutorial-pt/',
@@ -286,7 +286,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 6000,
       max: 95000,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698d1c7095bffea193079a80',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698d1c7095bffea193079a80',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
@@ -308,7 +308,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 1500,
       max: 22000,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -330,7 +330,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 6,
       max: 70,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -352,7 +352,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 1,
       max: 5,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -374,7 +374,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 350,
       max: 3500,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -396,7 +396,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 3,
       max: 30,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -418,7 +418,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 200,
       max: 2000,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -440,7 +440,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 25,
       max: 250,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
       step5: 'https://aviatorpredictor.world/tutorial-es/',
@@ -506,7 +506,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 1,
       max: 5,
     },
-    accessCodeLink: 'https://t.me/predictormanager_bot?start=698148aa63db28fcd50eae88',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698148aa63db28fcd50eae88',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-1x/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
