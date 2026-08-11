@@ -12,6 +12,7 @@ import { captureLeadParams, appendLeadParamsToUrl } from "@/lib/leadParams";
 
 // Links de "GET MY ACCESS CODE" específicos da versão /africa
 const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
+  MZ: 'https://aviatorpredictor.world/chat-mz',
   ZM: 'https://aviatorpredictor.world/chat-zm',
   TZ: 'https://aviatorpredictor.world/chat-tz',
   UG: 'https://aviatorpredictor.world/chat-ug',

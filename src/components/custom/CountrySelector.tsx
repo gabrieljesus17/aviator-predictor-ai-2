@@ -38,7 +38,7 @@ export default function CountrySelector({ isOpen, onClose, countryList }: Countr
           Set your operating region
         </h2>
         <p className="text-gray-400 text-sm text-center">
-          Selecciona tu región de operación
+          Selecione o seu país de operação
         </p>
 
         {/* Lista de países */}

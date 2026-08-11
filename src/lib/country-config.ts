@@ -270,6 +270,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-pt/',
     },
   },
+  MZ: {
+    code: 'MZ',
+    name: 'Moçambique',
+    flag: '🇲🇿',
+    currencyCode: 'MZN',
+    currencySymbol: 'MZN',
+    valueDistribution: {
+      range1: { percent: 38, min: 8800, max: 88000 },
+      range2: { percent: 38, min: 88001, max: 213000 },
+      range3: { percent: 16, min: 213001, max: 444000 },
+      range4: { percent: 8, min: 444001, max: 888000 },
+    },
+    betAmountRange: {
+      min: 350,
+      max: 5000,
+    },
+    accessCodeLink: 'https://aviatorpredictor.world/chat-mz',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-bantu/',
+      step5: 'https://aviatorpredictor.world/tutorial-pt/',
+    },
+  },
   ID: {
     code: 'ID',
     name: 'Indonesia',
@@ -520,4 +542,4 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-export const COUNTRY_LIST_AFRICA = ['TZ', 'UG', 'ZM', 'LR'];
+export const COUNTRY_LIST_AFRICA = ['MZ', 'TZ', 'UG', 'ZM', 'LR'];

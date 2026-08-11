@@ -16,6 +16,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   BD: 'bn', // Bangladesh
   TR: 'tr', // Turkey
   AO: 'pt', // Angola
+  MZ: 'pt', // Moçambique
   ID: 'id', // Indonesia
   CO: 'es', // Colombia
   MX: 'es', // México
