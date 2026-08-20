@@ -8,7 +8,7 @@ import LiveStudentsMenu from "@/components/custom/LiveStudentsMenu";
 import { soundManager } from "@/lib/sounds";
 import { useTranslation } from "@/hooks/useTranslation";
 
-export default function AfricaStep3() {
+export default function AsiaStep3() {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -28,7 +28,7 @@ export default function AfricaStep3() {
   const handleActivate = () => {
     updateActivity();
     soundManager.playClick();
-    router.push("/africa/step-4");
+    router.push("/asia/step-4");
   };
 
   return (

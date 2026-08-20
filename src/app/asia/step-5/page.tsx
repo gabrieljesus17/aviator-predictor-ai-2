@@ -80,7 +80,7 @@ class GradualMetrics {
 const metricsManager = new GradualMetrics();
 const getTechMessage = (index: number): string => metricsManager.getMessage(index);
 
-export default function AfricaStep5() {
+export default function AsiaStep5() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
   const { t } = useTranslation();
@@ -161,7 +161,7 @@ export default function AfricaStep5() {
 
   const handleVoltar = () => {
     updateActivity();
-    router.push("/africa/step-3");
+    router.push("/asia/step-3");
   };
 
   const addLogsSequentially = async (logMessages: string[], delay: number) => {

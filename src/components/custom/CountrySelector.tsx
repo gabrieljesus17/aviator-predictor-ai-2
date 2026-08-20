@@ -7,9 +7,11 @@ interface CountrySelectorProps {
   isOpen: boolean;
   onClose: () => void;
   countryList?: string[];
+  onBack?: () => void;
+  transitionIn?: boolean;
 }
 
-export default function CountrySelector({ isOpen, onClose, countryList }: CountrySelectorProps) {
+export default function CountrySelector({ isOpen, onClose, countryList, onBack, transitionIn }: CountrySelectorProps) {
   const { setCountry } = useCountry();
   const list = countryList ?? COUNTRY_LIST;
 
@@ -30,9 +32,21 @@ export default function CountrySelector({ isOpen, onClose, countryList }: Countr
 
       {/* Modal Card */}
       <div
-        className="relative w-full max-w-md bg-[#1a1a1a] rounded-2xl p-6 border border-[#2dff57]/30 shadow-2xl animate-scaleIn"
+        className={`relative w-full max-w-md bg-[#1a1a1a] rounded-2xl p-6 border border-[#2dff57]/30 shadow-2xl ${transitionIn ? 'animate-slideIn' : 'animate-scaleIn'}`}
         onClick={(e) => e.stopPropagation()}
       >
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="mb-4 flex items-center gap-2 text-[#2dff57] text-sm font-medium bg-[#0f0f0f] hover:bg-[#1f1f1f] border border-[#2dff57]/40 hover:border-[#2dff57] rounded-lg px-3 py-2 transition-all"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to continent
+          </button>
+        )}
+
         {/* Título */}
         <h2 className="text-white text-2xl font-semibold text-center mb-1">
           Set your operating region
@@ -95,11 +109,24 @@ export default function CountrySelector({ isOpen, onClose, countryList }: Countr
             transform: scale(1);
           }
         }
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(24px) scale(0.97);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
         }
         .animate-scaleIn {
           animation: scaleIn 0.3s ease-out;
+        }
+        .animate-slideIn {
+          animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
     </div>

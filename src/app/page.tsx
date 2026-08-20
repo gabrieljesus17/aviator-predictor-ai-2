@@ -3,20 +3,33 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isSessionActive, updateActivity } from "@/lib/session";
-import { useCountry } from "@/contexts/CountryContext";
 import CountrySelector from "@/components/custom/CountrySelector";
+import ContinentSelector from "@/components/custom/ContinentSelector";
 import { useTranslation } from "@/hooks/useTranslation";
 import { captureLeadParams, getLeadParamsForRoute } from "@/lib/leadParams";
+import {
+  COUNTRY_LIST_AFRICA,
+  COUNTRY_LIST_CENTRAL_SOUTH_AMERICA,
+  COUNTRY_LIST_NORTH_AMERICA,
+  COUNTRY_LIST_EUROPE,
+  COUNTRY_LIST_ASIA,
+} from "@/lib/country-config";
+
+const CONTINENT_COUNTRY_LISTS: Record<string, string[]> = {
+  africa: COUNTRY_LIST_AFRICA,
+  centralandsouthamerica: COUNTRY_LIST_CENTRAL_SOUTH_AMERICA,
+  northamerica: COUNTRY_LIST_NORTH_AMERICA,
+  europe: COUNTRY_LIST_EUROPE,
+  asia: COUNTRY_LIST_ASIA,
+};
 
 export default function Home() {
   const router = useRouter();
-  const { isCountrySelected } = useCountry();
   const { t } = useTranslation();
-  const [showCountrySelector, setShowCountrySelector] = useState(false);
+  const [showContinentSelector, setShowContinentSelector] = useState(false);
+  const [selectedContinent, setSelectedContinent] = useState<string | null>(null);
 
-  // Verificar se já tem sessão ativa e redirecionar para step-3
   useEffect(() => {
-    // Captura params de origem (?origem=...) da URL de chegada do lead
     captureLeadParams();
     if (isSessionActive()) {
       router.push("/step-3");
@@ -25,15 +38,24 @@ export default function Home() {
 
   const handleGetSignals = () => {
     updateActivity();
+    setShowContinentSelector(true);
+  };
 
-    // Abrir modal de seleção de país
-    setShowCountrySelector(true);
+  const handleContinentSelected = (continentCode: string) => {
+    updateActivity();
+    setSelectedContinent(continentCode);
+  };
+
+  const handleBackToContinent = () => {
+    updateActivity();
+    setSelectedContinent(null);
   };
 
   const handleCountrySelected = () => {
-    setShowCountrySelector(false);
-    // Após selecionar país, navegar para step-2 levando os params de origem
-    router.push("/step-2" + getLeadParamsForRoute());
+    const continent = selectedContinent;
+    setShowContinentSelector(false);
+    setSelectedContinent(null);
+    router.push(`/${continent}/step-2${getLeadParamsForRoute()}`);
   };
 
   return (
@@ -61,11 +83,23 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Modal de Seleção de País */}
-      <CountrySelector
-        isOpen={showCountrySelector}
-        onClose={handleCountrySelected}
+      {/* Modal de Seleção de Continente */}
+      <ContinentSelector
+        isOpen={showContinentSelector && !selectedContinent}
+        onSelect={handleContinentSelected}
+        onClose={() => setShowContinentSelector(false)}
       />
+
+      {/* Modal de Seleção de País (do continente escolhido) */}
+      {selectedContinent && (
+        <CountrySelector
+          isOpen={true}
+          onClose={handleCountrySelected}
+          onBack={handleBackToContinent}
+          countryList={CONTINENT_COUNTRY_LISTS[selectedContinent]}
+          transitionIn
+        />
+      )}
     </div>
   );
 }

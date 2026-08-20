@@ -542,4 +542,16 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-export const COUNTRY_LIST_AFRICA = ['MZ', 'TZ', 'UG', 'ZM', 'LR'];
+export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'AO', 'NG', 'ZA', 'TZ', 'ZM', 'MZ', 'UG', 'LR'];
+
+// Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
+export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'EC', 'DO', 'CL', 'PE', 'VE'];
+
+// Lista de países para a versão /northamerica (ainda sem países cadastrados)
+export const COUNTRY_LIST_NORTH_AMERICA: string[] = [];
+
+// Lista de países para a versão /europe (Turkey também está na Europa, mesmo componente/código "TR")
+export const COUNTRY_LIST_EUROPE = ['TR'];
+
+// Lista de países para a versão /asia (Turkey também está na Ásia, mesmo componente/código "TR")
+export const COUNTRY_LIST_ASIA = ['IN', 'PH', 'BD', 'ID', 'TR'];

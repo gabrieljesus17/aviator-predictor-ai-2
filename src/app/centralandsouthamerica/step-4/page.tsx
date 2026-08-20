@@ -9,7 +9,7 @@ import { soundManager } from "@/lib/sounds";
 import { useCountry } from "@/contexts/CountryContext";
 import { useTranslation } from "@/hooks/useTranslation";
 
-export default function AfricaStep4() {
+export default function CentralAndSouthAmericaStep4() {
   const router = useRouter();
   const { selectedCountry } = useCountry();
   const { t } = useTranslation();
@@ -29,13 +29,13 @@ export default function AfricaStep4() {
 
   const handleVoltar = () => {
     updateActivity();
-    router.push("/africa/step-3");
+    router.push("/centralandsouthamerica/step-3");
   };
 
   const handleEncontreiJogo = () => {
     updateActivity();
     soundManager.playClick();
-    router.push("/africa/step-5");
+    router.push("/centralandsouthamerica/step-5");
   };
 
   return (
