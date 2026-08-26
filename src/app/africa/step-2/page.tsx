@@ -14,7 +14,7 @@ import { captureLeadParams, appendLeadParamsToUrl } from "@/lib/leadParams";
 const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
   MZ: 'https://aviatorpredictor.world/chat-mz',
   ZM: 'https://aviatorpredictor.world/chat-zm',
-  TZ: 'https://aviatorpredictor.world/chat-tz',
+  TZ: 'https://tg.pulse.is/predictormanager_bot?start=6a8e39bdcfe8b474f00f72f4',
   UG: 'https://aviatorpredictor.world/chat-ug',
   LR: 'https://aviatorpredictor.world/chat-lr',
 };
