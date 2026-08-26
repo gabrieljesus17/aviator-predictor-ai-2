@@ -154,7 +154,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 900,
       max: 14000,
     },
-    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=6a8e39bdcfe8b474f00f72f4',
+    accessCodeLink: 'https://aviatorpredictor.world/chat-tz',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
