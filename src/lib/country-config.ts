@@ -358,6 +358,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-es/',
     },
   },
+  AR: {
+    code: 'AR',
+    name: 'Argentina',
+    flag: '🇦🇷',
+    currencyCode: 'ARS',
+    currencySymbol: 'ARS',
+    valueDistribution: {
+      range1: { percent: 38, min: 9000, max: 90000 },
+      range2: { percent: 38, min: 90001, max: 216000 },
+      range3: { percent: 16, min: 216001, max: 450000 },
+      range4: { percent: 8, min: 450001, max: 900000 },
+    },
+    betAmountRange: {
+      min: 400,
+      max: 6000,
+    },
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=69af7f2bbaee84a27d0a3945',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/como-encontrar-betwinner-es/',
+      step5: 'https://aviatorpredictor.world/tutorial-es/',
+    },
+  },
   EC: {
     code: 'EC',
     name: 'Ecuador',
@@ -545,7 +567,7 @@ export const COUNTRY_LIST = [
 export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'AO', 'NG', 'ZA', 'TZ', 'ZM', 'MZ', 'UG', 'LR'];
 
 // Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
-export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'EC', 'DO', 'CL', 'PE', 'VE'];
+export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE'];
 
 // Lista de países para a versão /northamerica (ainda sem países cadastrados)
 export const COUNTRY_LIST_NORTH_AMERICA: string[] = [];

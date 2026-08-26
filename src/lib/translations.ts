@@ -25,6 +25,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   PE: 'es', // Perú
   VE: 'es', // Venezuela
   DO: 'es', // República Dominicana
+  AR: 'es', // Argentina
   OTHER: 'en', // Other
 };
 
