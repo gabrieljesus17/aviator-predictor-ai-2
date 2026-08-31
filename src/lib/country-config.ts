@@ -286,7 +286,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 350,
       max: 5000,
     },
-    accessCodeLink: 'https://aviatorpredictor.world/chat-mz',
+    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=6a95164786920b347b006c96',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bantu/',
       step5: 'https://aviatorpredictor.world/tutorial-pt/',
@@ -564,7 +564,7 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'AO', 'NG', 'ZA', 'TZ', 'ZM', 'MZ', 'UG', 'LR'];
+export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'MZ', 'AO', 'NG', 'ZA', 'TZ', 'ZM', 'UG', 'LR'];
 
 // Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
 export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE'];
