@@ -286,7 +286,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 350,
       max: 5000,
     },
-    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=6a95164786920b347b006c96',
+    accessCodeLink: 'https://aviatorpredictor.world/chat-mz/',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bantu/',
       step5: 'https://aviatorpredictor.world/tutorial-pt/',
