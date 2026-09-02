@@ -534,6 +534,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-en/',
     },
   },
+  GN: {
+    code: 'GN',
+    name: 'Guinée',
+    flag: '🇬🇳',
+    currencyCode: 'GNF',
+    currencySymbol: 'GNF',
+    valueDistribution: {
+      range1: { percent: 38, min: 8500, max: 85000 },
+      range2: { percent: 38, min: 85001, max: 204000 },
+      range3: { percent: 16, min: 204001, max: 425000 },
+      range4: { percent: 8, min: 425001, max: 850000 },
+    },
+    betAmountRange: {
+      min: 350,
+      max: 5000,
+    },
+    accessCodeLink: 'https://aviatorpredictor.world/chat-gn',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-bw/',
+      step5: 'https://aviatorpredictor.world/tutorial-en/',
+    },
+  },
   OTHER: {
     code: 'OTHER',
     name: 'Other',
@@ -564,7 +586,8 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'MZ', 'AO', 'NG', 'ZA', 'TZ', 'ZM', 'UG', 'LR'];
+// Ordem: 1.Ghana 2.Kenya 3.Tanzania 4.Moçambique 5.Guinée 6.Angola 7.Nigeria 8.SouthAfrica 9.Zambia 10.Uganda 11.Liberia
+export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'TZ', 'MZ', 'GN', 'AO', 'NG', 'ZA', 'ZM', 'UG', 'LR'];
 
 // Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
 export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE'];

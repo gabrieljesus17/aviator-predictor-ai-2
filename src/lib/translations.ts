@@ -1,6 +1,6 @@
 // Sistema de traduções multi-idioma
 
-export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id' | 'es';
+export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id' | 'es' | 'fr';
 
 // Mapeamento de país para idioma
 export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
@@ -26,6 +26,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   VE: 'es', // Venezuela
   DO: 'es', // República Dominicana
   AR: 'es', // Argentina
+  GN: 'fr', // Guinée (Conakry)
   OTHER: 'en', // Other
 };
 
@@ -269,5 +270,39 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_another_signal: 'Obtener otra Señal',
     recalibrating_ai: '⚙️ Recalibrando modelo de IA...',
     processing: 'Procesando...',
+  },
+  fr: {
+    // Step-1
+    get_ai_signals: 'OBTENIR DES SIGNAUX IA',
+    // Step-2
+    unlock_ai_access: "DÉBLOQUER L'ACCÈS IA",
+    enter_access_code: 'Saisissez votre code d’accès pour continuer',
+    access_code: "Code d'accès",
+    validate: 'VALIDER',
+    high_demand_message: "En raison d'une forte demande, les codes d'accès sont limités à 50 nouveaux utilisateurs par heure.",
+    access_code_info: "Si vous n'avez pas encore obtenu votre code d'accès, demandez-le pour débloquer l'accès complet.",
+    get_my_access_code: 'OBTENIR MON CODE',
+    decrypting: 'Déchiffrement...',
+    access_granted: 'ACCÈS ACCORDÉ',
+    // Step-3
+    logout: 'Déconnexion',
+    my_students: 'MES ÉLÈVES',
+    live: 'EN DIRECT',
+    ai_signals: 'SIGNAUX IA',
+    activate: 'ACTIVER',
+    support: 'Assistance',
+    // Step-4
+    back: 'Retour',
+    find_aviator_game: 'D’abord, trouvez le jeu "Aviator"',
+    how_to_find_aviator: 'COMMENT TROUVER AVIATOR SUR LE SITE',
+    i_found_game: "J'AI TROUVÉ LE JEU",
+    // Step-5
+    how_to_use_predictor: 'COMMENT UTILISER LE PRÉDICTEUR',
+    get_bet_size: 'Obtenir la taille de mise',
+    get_signal: 'Obtenir un signal',
+    analyzing_data: 'Analyse des données…',
+    get_another_signal: 'Obtenir un autre signal',
+    recalibrating_ai: '⚙️ Recalibrage du modèle IA...',
+    processing: 'Traitement...',
   },
 };

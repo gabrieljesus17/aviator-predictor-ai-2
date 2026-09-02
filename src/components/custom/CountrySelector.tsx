@@ -9,11 +9,13 @@ interface CountrySelectorProps {
   countryList?: string[];
   onBack?: () => void;
   transitionIn?: boolean;
+  continentCode?: string;
 }
 
-export default function CountrySelector({ isOpen, onClose, countryList, onBack, transitionIn }: CountrySelectorProps) {
+export default function CountrySelector({ isOpen, onClose, countryList, onBack, transitionIn, continentCode }: CountrySelectorProps) {
   const { setCountry } = useCountry();
   const list = countryList ?? COUNTRY_LIST;
+  const isAfrica = continentCode === 'africa';
 
   if (!isOpen) return null;
 
@@ -51,9 +53,16 @@ export default function CountrySelector({ isOpen, onClose, countryList, onBack, 
         <h2 className="text-white text-2xl font-semibold text-center mb-1">
           Set your operating region
         </h2>
-        <p className="text-gray-400 text-sm text-center">
-          Selecione o seu país de operação
-        </p>
+        <div className="mt-1 flex flex-col items-center gap-0.5">
+          <p className="text-gray-400 text-sm text-center">
+            Selecione o seu país de operação
+          </p>
+          {isAfrica && (
+            <p className="text-[#2dff57]/60 text-xs text-center tracking-wide">
+              Choisissez votre région d’opération
+            </p>
+          )}
+        </div>
 
         {/* Lista de países */}
         <div className="mt-6 space-y-2 max-h-[60vh] overflow-y-auto">

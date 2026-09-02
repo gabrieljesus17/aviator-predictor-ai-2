@@ -40,9 +40,14 @@ export default function ContinentSelector({ isOpen, onSelect, onClose }: Contine
         <h2 className="text-white text-2xl font-semibold text-center mb-1">
           Set your continent
         </h2>
-        <p className="text-gray-400 text-sm text-center">
-          Selecciona tu continente
-        </p>
+        <div className="mt-1 flex flex-col items-center gap-0.5">
+          <p className="text-gray-400 text-sm text-center">
+            Selecciona tu continente
+          </p>
+          <p className="text-[#2dff57]/60 text-xs text-center tracking-wide">
+            Choisissez votre continent
+          </p>
+        </div>
 
         {/* Lista de continentes */}
         <div className="mt-6 space-y-2 max-h-[60vh] overflow-y-auto">

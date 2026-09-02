@@ -17,6 +17,7 @@ const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
   TZ: 'https://aviatorpredictor.world/chat-tz',
   UG: 'https://aviatorpredictor.world/chat-ug',
   LR: 'https://aviatorpredictor.world/chat-lr',
+  GN: 'https://aviatorpredictor.world/chat-gn',
 };
 
 export default function AfricaStep2() {

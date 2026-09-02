@@ -97,6 +97,7 @@ export default function Home() {
           onClose={handleCountrySelected}
           onBack={handleBackToContinent}
           countryList={CONTINENT_COUNTRY_LISTS[selectedContinent]}
+          continentCode={selectedContinent}
           transitionIn
         />
       )}
