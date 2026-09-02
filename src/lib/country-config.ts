@@ -66,7 +66,7 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       min: 50,
       max: 700,
     },
-    accessCodeLink: 'https://tg.pulse.is/predictormanager_bot?start=698cedbb33b8fbb4f602151f',
+    accessCodeLink: 'https://aviatorpredictor.world/chat-ke',
     videoLinks: {
       step4: 'https://aviatorpredictor.world/how-to-find-bw/',
       step5: 'https://aviatorpredictor.world/tutorial-en/',
