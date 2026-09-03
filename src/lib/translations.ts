@@ -27,6 +27,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   DO: 'es', // República Dominicana
   AR: 'es', // Argentina
   GN: 'fr', // Guinée (Conakry)
+  CG: 'fr', // Congo (Brazzaville)
   OTHER: 'en', // Other
 };
 
