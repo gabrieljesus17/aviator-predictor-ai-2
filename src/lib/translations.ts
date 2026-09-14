@@ -1,6 +1,6 @@
 // Sistema de traduções multi-idioma
 
-export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id' | 'es' | 'fr';
+export type Language = 'en' | 'bn' | 'tr' | 'pt' | 'id' | 'es' | 'fr' | 'rw';
 
 // Mapeamento de país para idioma
 export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
@@ -11,6 +11,7 @@ export const COUNTRY_TO_LANGUAGE: Record<string, Language> = {
   NG: 'en', // Nigeria
   ZA: 'en', // South Africa
   TZ: 'en', // Tanzania
+  RW: 'rw', // Rwanda (Kinyarwanda)
   PH: 'en', // Philippines
   IN: 'en', // India
   BD: 'bn', // Bangladesh
@@ -305,5 +306,39 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     get_another_signal: 'Obtenir un autre signal',
     recalibrating_ai: '⚙️ Recalibrage du modèle IA...',
     processing: 'Traitement...',
+  },
+  rw: {
+    // Step-1
+    get_ai_signals: 'BONA AMABURIRA YA AI',
+    // Step-2
+    unlock_ai_access: 'FUNGURA INJIRA YA AI',
+    enter_access_code: "Andika kode yawe y'ugukoresha ukomeze",
+    access_code: "Kode y'ugukoresha",
+    validate: 'EMEZA',
+    high_demand_message: "Kubera ibyifuzo byinshi, kode z'ugukoresha zerekanwa ku bakoresha bashya 50 ku isaha.",
+    access_code_info: "Niba utarabonye kode yawe y'ugukoresha, yisabe kugirango ufungure ukoresha bwose.",
+    get_my_access_code: "BONA KODE YANJYE Y'UGUKORESHA",
+    decrypting: 'Bisobanurwa...',
+    access_granted: 'UGUKORESHA BYEMEJWE',
+    // Step-3
+    logout: 'Sohoka',
+    my_students: 'ABANYESHURI BANJYE',
+    live: 'KURI MURONGO',
+    ai_signals: 'AMABURIRA YA AI',
+    activate: 'KOMEKA',
+    support: 'Ubufasha',
+    // Step-4
+    back: 'Subira inyuma',
+    find_aviator_game: 'Kibanza, shaka umukino wa "Aviator"',
+    how_to_find_aviator: 'UKO WASHAKIRA AVIATOR KURI WEBSITE',
+    i_found_game: 'NABONYE UMUKINO',
+    // Step-5
+    how_to_use_predictor: 'UKO WAKORESHA PREDICTOR',
+    get_bet_size: "Bona ingano y'igitesho",
+    get_signal: 'BONA IKIMENYETSO',
+    analyzing_data: 'Gusesengura amakuru…',
+    get_another_signal: 'BONA IKINDI KIMENYETSO',
+    recalibrating_ai: '⚙️ Kongera kugenera model ya AI...',
+    processing: 'Birakorwa...',
   },
 };

@@ -556,6 +556,28 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
       step5: 'https://aviatorpredictor.world/tutorial-en/',
     },
   },
+  RW: {
+    code: 'RW',
+    name: 'Rwanda',
+    flag: '🇷🇼',
+    currencyCode: 'RWF',
+    currencySymbol: 'RWF',
+    valueDistribution: {
+      range1: { percent: 38, min: 13000, max: 130000 },
+      range2: { percent: 38, min: 130001, max: 313000 },
+      range3: { percent: 16, min: 313001, max: 650000 },
+      range4: { percent: 8, min: 650001, max: 1300000 },
+    },
+    betAmountRange: {
+      min: 500,
+      max: 7000,
+    },
+    accessCodeLink: 'https://aviatorpredictor.world/chat-rw',
+    videoLinks: {
+      step4: 'https://aviatorpredictor.world/how-to-find-bw/',
+      step5: 'https://aviatorpredictor.world/tutorial-en/',
+    },
+  },
   CG: {
     code: 'CG',
     name: 'Congo',
@@ -608,8 +630,8 @@ export const COUNTRY_LIST = [
 ];
 
 // Lista de países para a versão /africa
-// Ordem: 1.Ghana 2.Kenya 3.Tanzania 4.Moçambique 5.Guinée 6.Angola 7.Nigeria 8.SouthAfrica 9.Zambia 10.Uganda 11.Liberia
-export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'TZ', 'MZ', 'GN', 'CG', 'AO', 'NG', 'ZA', 'ZM', 'UG', 'LR'];
+// Ordem: 1.Ghana 2.Kenya 3.Tanzania 4.Rwanda 5.Moçambique 6.Guinée 7.Congo 8.Angola 9.Nigeria 10.SouthAfrica 11.Zambia 12.Uganda 13.Liberia
+export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'TZ', 'RW', 'MZ', 'GN', 'CG', 'AO', 'NG', 'ZA', 'ZM', 'UG', 'LR'];
 
 // Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
 export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE'];

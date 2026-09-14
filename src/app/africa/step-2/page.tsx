@@ -15,6 +15,7 @@ const AFRICA_ACCESS_CODE_LINKS: Record<string, string> = {
   MZ: 'https://aviatorpredictor.world/chat-mz/',
   ZM: 'https://aviatorpredictor.world/chat-zm',
   TZ: 'https://aviatorpredictor.world/chat-tz',
+  RW: 'https://aviatorpredictor.world/chat-rw',
   UG: 'https://aviatorpredictor.world/chat-ug',
   LR: 'https://aviatorpredictor.world/chat-lr',
   GN: 'https://aviatorpredictor.world/chat-gn',
