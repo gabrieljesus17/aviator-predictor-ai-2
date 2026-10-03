@@ -631,16 +631,21 @@ export const COUNTRY_LIST = [
 
 // Lista de países para a versão /africa
 // Ordem: 1.Ghana 2.Kenya 3.Tanzania 4.Rwanda 5.Moçambique 6.Guinée 7.Congo 8.Angola 9.Nigeria 10.SouthAfrica 11.Zambia 12.Uganda 13.Liberia
-export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'TZ', 'RW', 'MZ', 'GN', 'CG', 'AO', 'NG', 'ZA', 'ZM', 'UG', 'LR'];
+// "Other" sempre ao final como opção padrão para leads sem país cadastrado
+export const COUNTRY_LIST_AFRICA = ['GH', 'KE', 'TZ', 'RW', 'MZ', 'GN', 'CG', 'AO', 'NG', 'ZA', 'ZM', 'UG', 'LR', 'OTHER'];
 
 // Lista de países para a versão /centralandsouthamerica (países latinos de língua espanhola)
-export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE'];
+// "Other" sempre ao final como opção padrão para leads sem país cadastrado
+export const COUNTRY_LIST_CENTRAL_SOUTH_AMERICA = ['CO', 'MX', 'AR', 'EC', 'DO', 'CL', 'PE', 'VE', 'OTHER'];
 
 // Lista de países para a versão /northamerica (ainda sem países cadastrados)
-export const COUNTRY_LIST_NORTH_AMERICA: string[] = [];
+// "Other" sempre ao final como opção padrão para leads sem país cadastrado
+export const COUNTRY_LIST_NORTH_AMERICA: string[] = ['OTHER'];
 
 // Lista de países para a versão /europe (Turkey também está na Europa, mesmo componente/código "TR")
-export const COUNTRY_LIST_EUROPE = ['TR'];
+// "Other" sempre ao final como opção padrão para leads sem país cadastrado
+export const COUNTRY_LIST_EUROPE = ['TR', 'OTHER'];
 
 // Lista de países para a versão /asia (Turkey também está na Ásia, mesmo componente/código "TR")
-export const COUNTRY_LIST_ASIA = ['IN', 'PH', 'BD', 'ID', 'TR'];
+// "Other" sempre ao final como opção padrão para leads sem país cadastrado
+export const COUNTRY_LIST_ASIA = ['IN', 'PH', 'BD', 'ID', 'TR', 'OTHER'];
